@@ -1,0 +1,122 @@
+html, body {
+  overflow-x: hidden;
+}
+// SCROLL bar styles
+::-webkit-scrollbar {
+  width: 6px;
+  height: 0;
+}
+.background-cover {
+  background-size: cover;
+}
+::-webkit-scrollbar-track {
+  background: $secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary;
+  border-radius: 2rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+}
+//custom css
+a {
+  text-decoration: none !important;
+}
+.object-fit {
+  object-fit: cover;
+}
+.overflow-x-scroll {
+  overflow-x:scroll;
+}
+.text-justify {
+  text-align: justify;
+}
+.lazy {
+  transition: all 0.3s ease-in-out;
+}
+.z--1 {
+  z-index: -1;
+}
+.z-top {
+  z-index: 10;
+}
+.min-vh-50 {
+  min-height: 50vh;
+}
+.vh-50 {
+  height: 50vh!important;
+}
+.min-vh-75 {
+  min-height: 75vh;
+}
+.bf-bright {
+  backdrop-filter: brightness(0.8);
+}
+.all-white a{
+  h1, h2, h3, h4, h5, h6, p, div, span , a {
+    color: white !important
+  }
+}
+.all-dark a {
+  h1, h2, h3, h4, h5, h6, p, div, span , a {
+    color: black !important
+  }
+}
+.badge {
+  width: 15px;
+  height: 15px;
+  line-height: 1;
+  text-align: center;
+}
+.page-numbers.current {
+  background-color: $primary!important;
+}
+// woocomerce my-account page
+#primary.site-main {
+  @extend .container , .py-5
+}
+.btn-primary {
+  &:hover a {
+    @extend .text-primary
+  }
+}
+form.edit-account[method="post"] {
+  input {
+    border: 1px solid gray;
+    border-radius: $border-radius;
+    padding: 5px;
+  }
+  button {
+    @extend .btn , .btn-primary  , .border ,.border-primary
+  }
+}
+i {
+  &:before {
+    margin-bottom:5px;
+    height:70%
+  }
+}
+//.woocommerce img, .woocommerce-page img {
+//  height:unset;
+//  max-height: 120px;
+//}
+.h-150p {
+  width:auto;
+  height:150px
+}.h-100p {
+  width:auto;
+  height:100px
+}
+.text-shadow {
+  text-shadow: 0px 2px #575656;
+}
+.border-dash {
+  border:1px dashed;
+}
+.gform_button {
+  @extend .btn , .bg-primary;
+  color: white;
+}

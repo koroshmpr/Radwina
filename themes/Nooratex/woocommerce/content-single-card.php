@@ -16,7 +16,7 @@ global $product;
     <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($product->ID), 'single-post-thumbnail'); ?>
     <img src="<?php echo $image[0]; ?>"
          class=" mx-auto d-block border-0 rounded-1" height="100">
-    <div class="card-body">
+    <div class="card-body px-1">
         <h6 class="card-title text-dark">
             <a href="<?php the_permalink(); ?>"
                class="stretched-link text-dark fw-bold"><?php the_title(); ?></a>

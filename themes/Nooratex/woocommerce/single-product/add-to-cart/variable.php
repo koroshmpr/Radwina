@@ -34,7 +34,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 		<table class="variations mx-auto ms-lg-0" cellspacing="0" role="presentation">
 			<tbody>
 				<?php foreach ( $attributes as $attribute_name => $options ) : ?>
-					<tr class="d-flex gap-3 align-items-center">
+					<tr class="d-flex gap-3 align-items-start">
 						<th class="label fs-3"><label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>"><?php echo wc_attribute_label( $attribute_name ); // WPCS: XSS ok. ?></label></th>
 						<td class="value">
 							<?php
@@ -43,7 +43,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 										'options'   => $options,
 										'attribute' => $attribute_name,
 										'product'   => $product,
-                                        'class' => 'py-2'
+                                        'class' => 'p-2 border-0 shadow-sm w-100'
 									)
 								);
 								echo end( $attribute_keys ) === $attribute_name ? wp_kses_post( apply_filters( 'woocommerce_reset_variations_link', '<a class="reset_variations ms-2" href="#">' . esc_html__( 'Clear', 'woocommerce' ) . '</a>' ) ) : '';

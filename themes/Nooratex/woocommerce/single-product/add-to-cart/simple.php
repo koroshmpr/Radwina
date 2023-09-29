@@ -32,13 +32,11 @@ if ($product->is_in_stock()) : ?>
     <form class="cart"
           action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', $product->get_permalink())); ?>"
           method="post" enctype='multipart/form-data'>
-
-
         <div class="row g-4 align-items-center">
             <div class="col-12">
                 <div id="quantity-input-box" data-min="<?= $product->get_min_purchase_quantity() ?>"
                      data-max="<?= $product->get_max_purchase_quantity() ?>">
-                    <div class="hstack gap-4">
+                    <div class="hstack gap-4 justify-content-center justify-content-lg-start">
                         <div class="gap-2 d-flex justify-content-evenly align-items-center">
                             <button type="button"
                                     class="btn px-1 text-dark pb-0 pt-1 lh-1 bg-primary bg-opacity-25 lh-1 fw-bold btn-icon fs-3"
@@ -60,7 +58,7 @@ if ($product->is_in_stock()) : ?>
                     </div>
                 </div>
                 <!--                caculate price by quentity-->
-                <div class="d-flex gap-2 pt-3 align-items-center">
+                <div class="d-flex gap-2 pt-3 align-items-center justify-content-lg-start justify-content-center">
                     <h6 class="mb-0 fs-5 fw-bold">قیمت بر اساس متراژ : </h6>
                     <span class="fs-4 fw-bold" id="price-display"></span>
                     <p class="mb-0">تومان</p>
@@ -104,7 +102,7 @@ if ($product->is_in_stock()) : ?>
                 <!--                caculate price by quentity-->
             </div>
 
-            <div class="col-lg-5 col-sm col-8">
+            <div class="col-lg-5 col-12">
 
 
                 <?php do_action('woocommerce_before_add_to_cart_button'); ?>

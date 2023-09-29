@@ -28,12 +28,12 @@ get_header('shop');
  */
 
 ?>
-    <?php get_template_part('template-parts/shop/hero-archive-product');
-          get_template_part('template-parts/shop/more-category'); ?>
+<?php get_template_part('template-parts/shop/hero-archive-product');
+get_template_part('template-parts/shop/more-category'); ?>
     <!--    {{--  about and order banner  --}}-->
     <section id="archivePage">
         <div class="container-xl">
-            <div class="row">
+            <div class="row pb-5">
                 <!--                {{-- filters sidebar for lg up --}}-->
                 <div class="col-lg-3">
                     <?php
@@ -41,20 +41,19 @@ get_header('shop');
                     ?>
                 </div>
 
-                <div class="col-lg-9 py-5">
-                    <div class="row g-4 row-cols-xl-4 row-cols-lg-3 row-cols-md-4 row-cols-2" id="ajaxFilter">
-                        <?php if (have_posts()) {
-                            while (have_posts()) : the_post(); ?>
-                                <div class="col">
-                                    <?php wc_get_template_part('content', 'single-card'); ?>
-                                </div>
-                            <?php endwhile;
-                        } else {
-                            echo __('هیچ محصولی یافت نشد');
-                        }
-                        wp_reset_postdata();
-                        ?>
-                    </div>
+                <div class="col-lg-9 row g-lg-3 g-2 row-cols-xl-4 row-cols-lg-3 row-cols-md-4 row-cols-2 m-0"
+                     id="ajaxFilter">
+                    <?php if (have_posts()) {
+                        while (have_posts()) : the_post(); ?>
+                            <article>
+                                <?php wc_get_template_part('content', 'single-card'); ?>
+                            </article>
+                        <?php endwhile;
+                    } else {
+                        echo __('هیچ محصولی یافت نشد');
+                    }
+                    wp_reset_postdata();
+                    ?>
                     <?php get_template_part('template-parts/pagination') ?>
                 </div>
             </div>

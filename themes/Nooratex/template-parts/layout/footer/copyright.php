@@ -2,6 +2,6 @@
     <div class="container">
         <p class="m-0 fw-bold"><?= '©' . date("Y") . '&nbsp';?>- 2020  طراحی شده توسط
             <br class="d-lg-none">
-            <a class="fw-bold text-primary" href="https://pandplus.com">آژانس دیجیتال مارکتینگ پندپلاس</a></p>
+            <a class="fw-bold text-primary" href="https://kmpr.ir">آژانس دیجیتال مارکتینگ وبکو</a></p>
     </div>
 </div>

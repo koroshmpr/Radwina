@@ -30,7 +30,7 @@ do_action('woocommerce_before_customer_login_form'); ?>
         <?php endif; ?>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="<?= !is_front_page() ? 'col-lg-6': '';?> col-12">
+                <div class="<?= !is_front_page() ? 'col-lg-5': '';?> col-12 animate__animated animate__zoomIn">
                     <ul class="track-tab nav nav-tabs border-0 gap-1 justify-content-center" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link nav-link active" id="home-tab" data-bs-toggle="tab"
@@ -47,7 +47,7 @@ do_action('woocommerce_before_customer_login_form'); ?>
                             </button>
                         </li>
                     </ul>
-                    <div class="tab-content pt-4 border rounded" id="myTabContent">
+                    <div class="tab-content pt-4 border border-gray rounded bg-primary bg-opacity-10 shadow-sm" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="">
                                 <h2 class="text-center"><?php esc_html_e('Login', 'woocommerce'); ?></h2>

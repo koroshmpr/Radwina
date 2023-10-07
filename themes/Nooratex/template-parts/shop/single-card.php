@@ -5,7 +5,7 @@ global $product;
 <div class="card p-2">
 
     <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($product->ID), 'single-post-thumbnail'); ?>
-    <img src="<?php echo $image[0]; ?>"
+    <img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>"
          class=" mx-2 d-block border-0 rounded object-fit img-thumbnail" height="210">
     <div class="card-body text-lg-start text-center">
         <h6 class="card-title text-dark fs-4">

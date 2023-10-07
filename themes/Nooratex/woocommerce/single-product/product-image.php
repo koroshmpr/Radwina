@@ -48,40 +48,42 @@ $wrapper_classes = apply_filters(
         $gallery_image_ids = $product->get_gallery_image_ids();
         // If there are multiple images, initialize Swiper
         ?>
-        <div class="swiper-container hero_swiper overflow-hidden position-relative h-100 d-flex justify-content-center align-items-center">
-            <div class="swiper-wrapper">
+        <div class="swiper product_image_swiper">
+            <div class="swiper-wrapper my-0">
                 <?php
                 // Add your image URL here
                 $image_url = get_the_post_thumbnail_url();
 
                 // Output the first slide with the image
                 ?>
-                <div class="swiper-slide m-0">
-                    <img class="product__image" src="<?= $image_url; ?>"
+                <div class="swiper-slide">
+                    <img class="img-fluid rounded-0 m-0" src="<?= $image_url; ?>"
                          alt="<?php echo esc_attr__('Product Image', 'woocommerce'); ?>"/>
+                    <button class="product__image btn shadow-sm bg-opacity-25 bg-white rounded-circle position-absolute bottom-0 end-0 me-4 mb-3 p-2"
+                            type="button" data-bs-toggle="modal" data-bs-target="#myModal" data-link="<?php echo esc_url($image_url); ?>">
+                        <i class="bi bi-zoom-in text-white fs-3"></i>
+                    </button>
                 </div>
 
                 <?php
                 foreach ($gallery_image_ids  as $image_id) {
                     $image_url = wp_get_attachment_url($image_id);
                     ?>
-                    <div class="swiper-slide m-0">
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#myModal"
-                                class="product__image woocommerce-product-gallery__image border-0 bg-transparent"
-                                data-image-id="<?php echo esc_attr($image_id); ?>">
-                            <img class="product__image" src="<?php echo esc_url($image_url); ?>"
+                    <div class="swiper-slide" data-image-id="<?php echo esc_attr($image_id); ?>">
+                            <img class="img-fluid rounded-0 m-0" src="<?php echo esc_url($image_url); ?>"
                                  alt="<?php echo esc_attr__('Product Image', 'woocommerce'); ?>"/>
+                        <button class="product__image btn shadow-sm bg-opacity-25 bg-white rounded-circle position-absolute bottom-0 end-0 me-4 mb-3 p-2"
+                                type="button" data-bs-toggle="modal" data-bs-target="#myModal" data-link="<?php echo esc_url($image_url); ?>">
+                            <i class="bi bi-zoom-in text-white fs-3"></i>
                         </button>
                     </div>
                 <?php } ?>
 
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev text-primary translate-middle-y">
-                <i class="bi bi-arrow-right-circle-fill fs-1"></i>
+            <div class="swiper-pagination position-static"></div>
+            <div class="swiper-button-prev text-white p-4 rounded-circle bg-primary bg-opacity-25 translate-middle-y">
             </div>
-            <div class="swiper-button-next text-primary translate-middle-y">
-                <i class="bi bi-arrow-left-circle-fill fs-1"></i>
+            <div class="swiper-button-next text-white p-4 rounded-circle bg-primary bg-opacity-25 translate-middle-y">
             </div>
         </div>
     </figure>
@@ -90,9 +92,7 @@ $wrapper_classes = apply_filters(
             jQuery('.product__image').each(function () {
                 jQuery(this).on('click', function (e) {
                     e.preventDefault();
-                    console.log('clicked');
-                    var imageId = jQuery(this).attr('src');
-                    console.log(imageId)
+                    var imageId = jQuery(this).attr('data-link');
                     // Open the Bootstrap modal with the full-size image
                     jQuery('#myModal').modal('show');
 

@@ -233,14 +233,16 @@ document.addEventListener('DOMContentLoaded', function () {
         // disableOnInteraction: false,
     });
     const swiper8 = new Swiper('.product_image_swiper', {
-        loop: true,
+        loop: false,
         effect: 'slide',
-        speed: 0,
+        speed: 500,
         slidesPerView: 1,
         spaceBetween: 0,
+        centeredSlides: false,
         direction: 'horizontal',
         pagination: {
             el: '.swiper-pagination',
+            clickable: true
         },
         navigation: {
             nextEl: '.swiper-button-next',

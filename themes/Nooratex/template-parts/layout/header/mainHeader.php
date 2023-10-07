@@ -46,7 +46,7 @@ align-items-center justify-content-between pb-2 rounded-bottom bf-bright">
     <div class="col-lg-1 d-flex gap-lg-3 gap-2 align-items-center">
         <a class="fw-bold text-white" href="/my-account/"><i class="bi bi-person-fill me-1 fs-5"></i></a>
         <a class="fw-bold position-relative text-white" href="<?php echo esc_url(wc_get_cart_url()); ?>"
-           title="<?php _e('View your shopping cart', 'woothemes'); ?>"><i class="bi bi-cart3 me-1 fs-5"></i>
+           title="<?php _e('View your shopping cart', 'woothemes'); ?>"><i class="bi bi-cart me-1 fs-5"></i>
             <span class="translate-middle shop-badge small position-absolute top-0 start-0 text-primary fw-bolder rounded-circle bg-white lh-lg badge-shop d-flex justify-content-center align-content-center">
                 <?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count); ?></span>
         </a>

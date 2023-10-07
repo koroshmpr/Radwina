@@ -38,7 +38,7 @@ class Search {
             clearTimeout(this.typingTimer);
             if (this.searchField.val()) {
                 if (!this.isSpinnerVisible) {
-                    this.resultsDiv.html(`<div class="text-center mt-2"><div class="spinner-border align-baseline text-primary" role="status"></div></div>`);
+                    this.resultsDiv.html(`<div class="text-center my-5"><div class="spinner-border align-baseline text-warning" role="status"></div></div>`);
                     this.isSpinnerVisible = true;
 
                 }
@@ -59,33 +59,16 @@ class Search {
                     <div class="row g-3">
                         <!--       PRODUCT      -->
                         <div class="col-12">
-                        <h5 class="mb-2">محصول</h5>
-                        ${results.product.length ? '<div class="row row-cols-lg-4 row-cols-1 py-4">' : '<p class="p-2' +
+                        <h5 class="pt-3 text-center text-white fs-2">جسبجو در محصولات</h5>
+                        ${results.product.length ? '<div class="row row-cols-lg-6 row-cols-1 py-4">' : '<p class="p-2' +
                 ' m-0' +
                 ' border-top">هیچ محصولی یافت' +
                 ' نشد</p>'}
                         ${results.product.map(item =>
-                `<a class="my-2" href="${item.url}" alt="${item.title}">
-                                <div class="card p-2 border-top shadow-sm my-2">
-                                    <div class="row gx-2 gy-0">
-                                        <div class="col-3">
-                                            <div class="ratio ratio-1x1">
-                                                <img src="${item.img}"
-                                                     class="rounded"
-                                                     alt="${item.title}">
-                                            </div>
-                                        </div>
-    
-                                        <div class="col">
-                                            <div class="vstack h-100 py-2">
-                                                <h6 class="text-primary mb-2">${item.title}</h6>
-    
-                                                <p class="text-primary mt-auto m-0">
-                                                    ${item.price} <span class="ms-1">تومان</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                `<a class="my-2 animate__animated animate__slideInUp" href="${item.url}" alt="${item.title}">
+                                <div class="p-0 bg-warning bg-opacity-75 text-center rounded-2 shadow">
+                                          <img src="${item.img}" class="rounded-top w-100" width="200" height="200"  alt="${item.title}">
+                                           <h6 class="text-dark fs-6 fw-bold p-3">${item.title}</h6>
                                 </div>
                             </a>`
             ).join('')}

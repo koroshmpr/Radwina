@@ -6,24 +6,24 @@ $links = paginate_links(array(
 ));
 
 if ($links) : ?>
-    <div class="hstack flex-wrap justify-content-between flex-wrap gap-2 border my-4">
+    <div class="hstack flex-wrap justify-content-between flex-wrap gap-2 border my-4 w-100 rounded">
         <nav aria-label="pagination">
             <?php echo '<ul class="pagination ms-3 m-0 align-items-center">';
 
             // get_previous_posts_link will return a string or void if no link is set.
-            if ($prev_posts_link = get_previous_posts_link(__('<i class="bi bi-chevron-right fw-bold"></i>'))) :
-                echo '<li class="prev-list-item page-item me-2 bg-primary pb-1 rounded">';
+            if ($prev_posts_link = get_previous_posts_link(__('<i class="bi bi-chevron-right fw-bold text-white"></i>'))) :
+                echo '<li class="prev-list-item page-item me-2 bg-primary p-1 rounded">';
                 echo $prev_posts_link;
                 echo '</li>';
             endif;
 
-            echo '<li class="page-item">';
+            echo '<li class="page-item ">';
             echo join('</li><li class="page-item mx-2">', $links);
             echo '</li>';
 
             // get_next_posts_link will return a string or void if no link is set.
-            if ($next_posts_link = get_next_posts_link(__('<i class="bi bi-chevron-left fw-bold"></i>'))) :
-                echo '<li class="next-list-item page-item ms-2 bg-primary pb-1 rounded">';
+            if ($next_posts_link = get_next_posts_link(__('<i class="bi bi-chevron-left fw-bold text-white"></i>'))) :
+                echo '<li class="next-list-item page-item ms-2 bg-primary p-1 rounded">';
                 echo $next_posts_link;
                 echo '</li>';
             endif;

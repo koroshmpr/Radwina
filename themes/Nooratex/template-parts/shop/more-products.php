@@ -6,8 +6,8 @@
             'post_type' => 'product',
             'post_status' => 'publish',
             'order' => 'ASC',
-            'orderby' => 'date',
-            'posts_per_page' => '-1',
+            'orderby' => 'rand',
+            'posts_per_page' => '6',
             'ignore_sticky_posts' => true
         );
         $loop = new WP_Query($args); ?>

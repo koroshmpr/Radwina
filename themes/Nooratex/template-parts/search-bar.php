@@ -15,6 +15,6 @@
             class="btn-close bg-primary text-reset mobile-overlay__close d-none p-2">
     </button>
 </form>
-<div class="position-absolute bg-white rounded container top-100 start-0 end-0 search-overlay__results z-top search-box-overflow">
+<div class="position-absolute bg-primary bg-opacity-75 rounded-bottom container top-100 mt-n2 start-0 end-0 search-overlay__results z-top search-box-overflow animate__animated animate__slideInDown animate__delay-5s">
 
 </div>

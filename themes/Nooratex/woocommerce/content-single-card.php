@@ -8,7 +8,7 @@ global $product;
         $newness_days = 30;
         $created = strtotime($product->get_date_created());
         if ((time() - (60 * 60 * 24 * $newness_days)) < $created) {
-            echo '<span class="px-2 pt-1 pb-2 rounded text-white bg-danger">' . esc_html__('جدید', 'woocommerce') .
+            echo '<span class="px-2 pt-1 pb-2 rounded text-dark bg-warning">' . esc_html__('جدید', 'woocommerce') .
                 '</span>';
         }
         ?>

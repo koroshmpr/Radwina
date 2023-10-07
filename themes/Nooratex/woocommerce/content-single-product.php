@@ -34,7 +34,7 @@ if (post_password_required()) {
 <section>
     <div class="container-xl">
         <div class="row justify-content-center mt-5 align-items-start">
-            <div class="col-lg-7 px-0 px-lg-4">
+            <div class="col-lg-7">
                 <?php
                 /**
                  * Hook: woocommerce_before_single_product_summary.

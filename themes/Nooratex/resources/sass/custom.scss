@@ -433,6 +433,14 @@ nav {
     }
   }
 }
+.swiper-pagination-bullet {
+  transition: padding 0.4s linear;
+  &.swiper-pagination-bullet-active {
+    padding: 0 20px;
+    background: $primary !important;
+    @extend .rounded-pill
+  }
+}
 .hover-effect a{
     transition: all 0.5s;
     &:hover {
@@ -472,4 +480,10 @@ input#search-form-Desktop::placeholder {
 }
 #seconds , #minutes , #hours , #days {
   min-width: 50px;
+}
+.product-image__modal {
+  transition: transform 0.5s linear;
+  &:hover {
+    transform: scale(2);
+  }
 }

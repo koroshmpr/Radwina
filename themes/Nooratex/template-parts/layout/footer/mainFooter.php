@@ -1,48 +1,98 @@
-<div class="bg-primary bg-opacity-10 py-3">
-    <div class="container">
-<!--            logo and social-->
-            <div class="p-4 text-center">
-                <?php if (get_field('logo_type' ,'option') == 'image' ) { ?>
-                    <a class="logo-brand text-center" href="/">
-                        <img class="me-lg-3" src="<?= get_field('brand_logo_img' , 'option')['url'] ;?>"
-                             alt="<?= get_field('brand_logo_img' , 'option')['title'] ;?>">
-                    </a>
-                <?php }
-                if (get_field('logo_type' , 'option') == 'svg') { ?>
-                    <a class="logo-brand text-center" href="/">
-                        <span class="col"><?= get_field('brand_logo' , 'option') ;?></span>
-                    </a>
-                <?php }?>
-                <nav class="py-4">
-                    <?php
-                    $locations = get_nav_menu_locations();
-                    $menu = wp_get_nav_menu_object($locations['footerLocationOne']);
-                    if ($menu) :
-                        wp_nav_menu(array(
-                            'theme_location' => 'footerLocationOne',
-                            'menu_class' => 'navbar-nav d-flex flex-row flex-wrap justify-content-center gap-3 align-items-center',
-                            'container' => false,
-                            'menu_id' => 'navbarTogglerMenu',
-                            'item_class' => 'nav-item',
-                            'link_class' => 'lazy text-decoration-none',
-                            'depth' => 1,
-                        ));
-                    endif;
-                    ?></nav>
-                <?php get_template_part('template-parts/social-media');?>
+<div class="bg-primary bg-opacity-10 pt-5 px-lg-5">
+    <div class="d-md-flex d-grid align-items-start justify-content-lg-between justify-content-center flex-wrap">
+        <!--            contact-->
+        <div class="col-11 col-md-7 col-lg-4 row py-3 py-lg-0 justify-content-center align-items-center gap-3 pe-lg-4 mx-auto">
+            <div class="text-justify">
+                <?= get_field('footer_description', 'option'); ?>
             </div>
-<!--            contact-->
-            <div class="d-flex flex-wrap justify-content-around">
-                <div class="col-12 col-lg-3 d-flex gap-4 flex-wrap py-3 justify-content-center order-lg-1 order-2">
+            <div class="text-center text-lg-start">
+                <?php
+                while (have_rows('confirmation', 'option')): the_row();
+                    ?><?= get_sub_field('conf_items', 'option'); ?>
+                <?php endwhile; ?>
+            </div>
+        </div>
+        <!--            menus-->
+        <div class="col-lg-3 col-md-4 col-12 d-grid d-md-flex px-3 gap-3 justify-content-center">
+            <!--            column-02-->
+            <div class="col-md-5 col-12 my-2 my-lg-0">
+                <p class="fw-bold fs-5 mb-4 text-center text-dark text-lg-start"><?= get_field('first_menu', 'option'); ?></p>
+                <?php
+                $locations = get_nav_menu_locations();
+                $menu = wp_get_nav_menu_object($locations['footerLocationOne']);
+                ?>
+                <?php
+                wp_nav_menu(array(
+                    'theme_location' => 'footerLocationOne',
+                    'menu_class' => 'list-unstyled pe-0 d-md-grid d-flex flex-wrap gap-3 justify-content-lg-start justify-content-center align-items-center align-items-lg-start',
+                    'container' => false,
+                    'menu_id' => 'footerLocationOne',
+                    'item_class' => 'nav-item',
+                    'link_class' => 'lazy text-decoration-none text-dark text-opacity-75',
+                    'depth' => 1,
+                ));
+                ?>
+
+            </div>
+            <!--            column-03-->
+            <div class="col-md-5 col-12 my-2 my-lg-0">
+                <p class="fw-bold fs-5 mb-4 text-center text-dark text-lg-start"><?= get_field('second_menu', 'option'); ?></p>
+                <?php
+                $locations = get_nav_menu_locations();
+                $menu = wp_get_nav_menu_object($locations['footerLocationTwo']);
+                ?>
+                <?php
+                wp_nav_menu(array(
+                    'theme_location' => 'footerLocationTwo',
+                    'menu_class' => 'list-unstyled pe-0 d-md-grid d-flex flex-wrap gap-3 justify-content-lg-start justify-content-center align-items-center align-items-lg-start',
+                    'container' => false,
+                    'menu_id' => 'footerLocationTwo',
+                    'item_class' => 'nav-item',
+                    'link_class' => 'lazy text-decoration-none text-dark text-opacity-75',
+                    'depth' => 1,
+                ));
+                ?>
+
+            </div>
+        </div>
+        <!--            logo and social-->
+        <div class="col-12 col-lg-5 p-md-5 p-lg-2 text-center text-md-start">
+            <div class="row justify-content-around align-items-stretch h-100 g-5">
+                <div class="col-md-6 col-11 animate__animated animate__slideInLeft">
+                    <h6 class="text-primary fw-bold fs-4">راه های ارتباطی</h6>
+                    <address class="py-2 fw-bold text-dark d-flex justify-content-center justify-content-lg-start gap-3 align-items-center mb-0">
+                        <i class="bi bi-geo-alt-fill me-2 text-primary"></i>
+                        <?= get_field('address', 'option'); ?>
+                    </address>
+                    <a href="tel:<?= get_field('phone_number', 'option'); ?>"
+                       class="py-2 fw-bold text-dark d-flex gap-3 justify-content-center justify-content-lg-start align-items-center">
+                        <i class="bi bi-telephone-fill me-2 text-primary"></i>
+                        <h6 class="text-primary fw-bolder m-0">شماره تلفن ثابت : </h6>
+                        <?= get_field('phone_number', 'option'); ?>
+                    </a>
+                    <a href="tel:<?= get_field('phone_management', 'option'); ?>"
+                       class="py-2 fw-bold text-dark d-flex justify-content-center justify-content-lg-start gap-3 align-items-center">
+                        <i class="bi bi-telephone-fill me-2 text-primary"></i>
+                        <h6 class="text-primary fw-bolder m-0">شماره موبایل مدیریت : </h6>
+                        <?= get_field('phone_management', 'option'); ?>
+                    </a>
+                    <a href="mailto:<?= get_field('email', 'option'); ?>"
+                       class="py-2 mb-2 fw-bold text-dark d-flex justify-content-center justify-content-lg-start gap-3 align-items-center">
+                        <i class="bi bi-envelope-fill me-2 text-primary"></i>
+                        <h6 class="text-primary fw-bolder m-0">ایمیل : </h6>
+                        <?= get_field('email', 'option'); ?>
+                    </a>
                     <?php
-                    while (have_rows('confirmation' , 'option')): the_row();
-                    ?>
-                    <a class="text-dark" href="#"><?= get_sub_field('conf_items' , 'option'); ?></a>
-                    <?php endwhile; ?>
+                    $socialSize = '17';
+                    $args = array (
+                        'size' => $socialSize
+                    );
+                    get_template_part('template-parts/social-media' , null , $args); ?>
                 </div>
-                <div class="col-12 col-lg-9 order-lg-2 order-1">
-                    <?= get_field('footer_description' ,'option');?>
+                <div class="col-md-6 col-11 animate__animated animate__slideInRight">
+                    <?= get_field('map', 'option'); ?>
                 </div>
             </div>
         </div>
+    </div>
 </div>

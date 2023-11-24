@@ -16,7 +16,7 @@
         )); ?>
         <div class="container">
             <div class="row justify-content-between">
-                <div class="col-md">
+                <div class="col-md overflow-scroll" style="max-height: 80vh">
                     <nav id="myTab" class="nav nav-pills flex-column">
                         <?php
                         if ($children) {

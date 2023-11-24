@@ -15,14 +15,7 @@ while (have_posts()) :
                 <article class="col-12 text-dark text-justify rounded-3 border border-1 p-lg-5 p-3 my-5 fs-5">
                     <?= the_content(); ?>
                 </article>
-                <div class="col-lg-5 col-12 my-2 p-lg-3 order-2 order-lg-1">
-                    <?php
-                    if (comments_open() || get_comments_number()) :
-                        comments_template();
-                    endif;
-                    ?>
-                </div>
-                <div class="col col-lg-7 order-1 order-lg-2 mb-5 mb-lg-0">
+                <div class="col-12  mb-5 mb-lg-0">
                     <?php get_template_part('template-parts/useful/more-services'); ?>
                 </div>
             </div>

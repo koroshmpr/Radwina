@@ -20,8 +20,10 @@ get_template_part('template-parts/homePage/services-list');
 get_template_part('template-parts/homePage/service-detail');
 //    banners
 get_template_part('template-parts/homePage/banners');
+//    property
+get_template_part('template-parts/homePage/property');
 //timer
-get_template_part('template-parts/homePage/timer');
+//get_template_part('template-parts/homePage/timer');
 //more products
 get_template_part('template-parts/shop/more-products');
 //    coupon

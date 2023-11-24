@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="22px" viewBox="0 0 22 22" version="1.1" style="&#10;    filter: invert(1);&#10;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="<?= $args['size'] ?? '22';?>" height="<?= $args['size'] ?? '22';?>" viewBox="0 0 22 22" version="1.1" style="&#10;    filter: invert(1);&#10;">
     <defs fill="#031634">
         <filter id="alpha" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%" fill="#031634">
             <feColorMatrix type="matrix" in="SourceGraphic" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" fill="#031634"/>

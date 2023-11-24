@@ -9,7 +9,7 @@
                         <?= get_field('banner_title_1'); ?>
                     </h5>
                     <p><?= get_field('banner_content_1'); ?></p>
-                    <a href="<?= get_field('banner_button_link_1'); ?>"
+                    <a href="<?= get_field('banner_button_link_1')['url']; ?>"
                        class="text-black btn rounded bg-white align-items-center shadow-sm stretched-link">
                         <?= get_field('banner_button_title_1'); ?>
                         <i style="background-color: <?= get_field('banner_color_1'); ?>"
@@ -30,7 +30,7 @@
                     <?= get_field('banner_title_4'); ?>
                 </h5>
                 <p><?= get_field('banner_content_4'); ?></p>
-                <a href="<?= get_field('banner_button_link_4'); ?>"
+                <a href="<?= get_field('banner_button_link_4')['url']; ?>"
                    class="text-black btn rounded bg-white align-items-center shadow-sm stretched-link">
                     <?= get_field('banner_button_title_4'); ?>
                     <i style="background-color: <?= get_field('banner_color_4'); ?>"
@@ -49,7 +49,7 @@
                     <?= get_field('banner_title_2'); ?>
                 </h5>
                 <p><?= get_field('banner_content_2'); ?></p>
-                <a href="<?= get_field('banner_button_link_2'); ?>"
+                <a href="<?= get_field('banner_button_link_2')['url']; ?>"
                    class="text-black btn rounded bg-white align-items-center shadow-sm stretched-link">
                     <?= get_field('banner_button_title_2'); ?>
                     <i style="background-color: <?= get_field('banner_color_2'); ?>"
@@ -68,7 +68,7 @@
                     <?= get_field('banner_title_3'); ?>
                 </h5>
                 <p><?= get_field('banner_content_3'); ?></p>
-                <a href="<?= get_field('banner_button_link_3'); ?>"
+                <a href="<?= get_field('banner_button_link_3')['url']; ?>"
                    class="text-black btn rounded bg-white align-items-center shadow-sm">
                     <?= get_field('banner_button_title_3'); ?>
                     <i style="background-color: <?= get_field('banner_color_3'); ?>"
@@ -87,7 +87,7 @@
                     <?= get_field('banner_title_5'); ?>
                 </h5>
                 <p><?= get_field('banner_content_5'); ?></p>
-                <a href="<?= get_field('banner_button_link_5'); ?>"
+                <a href="<?= get_field('banner_button_link_5')['url']; ?>"
                    class="text-black btn rounded bg-white align-items-center shadow-sm stretched-link">
                     <?= get_field('banner_button_title_5'); ?>
                     <i style="background-color: <?= get_field('banner_color_5'); ?>"
@@ -106,7 +106,7 @@
                     <?= get_field('banner_title_6'); ?>
                 </h5>
                 <p><?= get_field('banner_content_6'); ?></p>
-                <a href="<?= get_field('banner_button_link_6'); ?>"
+                <a href="<?= get_field('banner_button_link_6')['url']; ?>"
                    class="text-black btn rounded bg-white align-items-center shadow-sm stretched-link">
                     <?= get_field('banner_button_title_6'); ?>
                     <i style="background-color: <?= get_field('banner_color_6'); ?>"

@@ -8,9 +8,6 @@
                     <div class="swiper-slide d-flex justify-content-center align-items-center hero_slider"
                          style="background-image: url('<?= get_sub_field('hero_image')['url']; ?>')">
                         <div class="col-12 d-flex flex-column align-items-center">
-                            <span class="p-3 bg-primary bg-opacity-75 text-white animate__animated animate__fadeInUp animate__delay-2s">
-                            <?= get_sub_field('hero_badge'); ?>
-                        </span>
                             <h5 class="p-4 mb-0 w-100 bg-dark bg-opacity-10 text-center text-white fw-bold display-2 animate__animated animate__fadeInUp shadow-sm">
                                 <?= get_sub_field('hero_title'); ?></h5>
                             <?php if (get_sub_field('hero_content')) { ?>

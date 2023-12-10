@@ -1,11 +1,9 @@
-<section>
-    <div class="swiper hero_swiper bg-primary">
-
+<section class="swiper hero_swiper bg-primary overflow-hidden">
         <div class="swiper-wrapper vh-100">
             <?php while (have_rows('hero_slider')):
                 the_row();
                 if (get_sub_field('slide_type') == 'image') { ?>
-                    <div class="swiper-slide d-flex justify-content-center align-items-center hero_slider"
+                    <div class="swiper-slide d-flex justify-content-center align-items-center hero_slider h-100"
                          style="background-image: url('<?= get_sub_field('hero_image')['url']; ?>')">
                         <div class="col-12 d-flex flex-column align-items-center">
                             <h5 class="p-4 mb-0 w-100 bg-dark bg-opacity-10 text-center text-white fw-bold display-2 animate__animated animate__fadeInUp shadow-sm">
@@ -36,6 +34,4 @@
         <div class="swiper-button-prev text-white">
             <i class="bi bi-arrow-right-circle-fill fs-2"></i>
         </div>
-    </div>
-
 </section>

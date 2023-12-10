@@ -1,8 +1,6 @@
 // Fonts
-
 //custom classes
 @import "custom/variables";
-
 // Bootstrap
 @import 'modules/bootstrap';
 
@@ -16,18 +14,12 @@
   --Iconsax-Color: #fff;
   --services-bg: green;
 }
-
 @import '~animate.css/animate.css';
-
-
 //custom base classes
 @import "custom/base";
 @import "custom/editor";
-
 // header
 @import "custom/header";
-
-
 @import "responsive";
 
 //contact form style
@@ -233,18 +225,18 @@ input[type="search"]::-webkit-search-results-decoration {
   @extend .d-grid , .gap-2;
 }
 .wpc-filters-section {
-  background-color: $primary;
-  padding: 10px;
-  border-radius: $border-radius;
-  .widget-title {
-    color: $white;
+  border: 1px solid $info;
+  padding: 1rem;
+  margin: 10px 0;
+  .widget-title , label a {
+    color: #262626;
     font-weight: $font-weight-bold;
     font-size: $font-size-lg;
   }
   label {
     margin-left: 5px;
     .wpc-term-count{
-      color: $white;
+      color: $primary;
       font-weight: $font-weight-bold;
     }
   }

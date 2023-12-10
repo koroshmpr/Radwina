@@ -9,20 +9,26 @@ require get_theme_file_path('/inc/search-route.php');
 
 function theme_scripts()
 {
-
-    //    <!-- Icons -->
     wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css', array());
     wp_enqueue_style('font', get_template_directory_uri() . '/public/fonts/yekanBakh/fontface.css', array());
-    wp_enqueue_style('style', get_stylesheet_directory_uri() . '/public/css/style.css', array(), true);
-    wp_enqueue_script('main-js', get_template_directory_uri() . '/public/js/app.js', array(), true);
+    wp_enqueue_style('style', get_stylesheet_directory_uri() . '/public/css/style.css', array(), '1.0');
+    wp_enqueue_script('main-js', get_template_directory_uri() . '/public/js/app.js', array('jquery'), '1.0', true);
 
+    // ACF Number
+    $acf_number = get_field('cat_step_number', 'option');
+    if ($acf_number) {
+        wp_localize_script('main-js', 'acfNumber', $acf_number);
+    }
+
+    // Additional Data
     wp_localize_script('main-js', 'jsData', array(
-        'root_url' => get_site_url(),
+        'root_url' => esc_url_raw(get_site_url()),
         'nonce' => wp_create_nonce('my-nonce')
     ));
 }
 
 add_action('wp_enqueue_scripts', 'theme_scripts');
+
 
 
 add_theme_support('title-tag');
@@ -500,3 +506,44 @@ function custom_override_checkout_fields($fields) {
     $fields['billing']['billing_phone']['priority'] = 11;
     return $fields;
 }
+// AJAX handler to get category ID by slug
+add_action('wp_ajax_get_category_id_by_slug', 'get_category_id_by_slug');
+add_action('wp_ajax_nopriv_get_category_id_by_slug', 'get_category_id_by_slug');
+
+function get_category_id_by_slug() {
+    $category_slug = $_POST['category_slug'];
+
+    $category = get_term_by('slug', $category_slug, 'product_cat');
+
+    if ($category) {
+        wp_send_json_success(array('category_id' => $category->term_id));
+    } else {
+        wp_send_json_error();
+    }
+
+    wp_die();
+}
+
+//function custom_post_type_args( $args, $post_type ) {
+//
+//    // Change 'project' to the slug of your custom post type
+//
+//    if ( 'portfolio' === $post_type ) {
+//
+//        // Set the with_front parameter to false
+//
+//        $args['rewrite']['with_front'] = false;
+//
+//    }
+//
+//    if ( 'service' === $post_type ) {
+//
+//        // Set the with_front parameter to false
+//
+//        $args['rewrite']['with_front'] = false;
+//
+//    }
+//
+//    return $args;
+//
+//}

@@ -1,28 +1,13 @@
 main {
   z-index: 2;
-  /* fix bug on iOS */
-  //height: 100vh;
-  //overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   background-color: white;
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   -webkit-transition: -webkit-transform 0.7s;
   -moz-transition: -moz-transform 0.7s;
   transition: transform 0.7s;
   -webkit-transition-timing-function: cubic-bezier(0.91, 0.01, 0.6, 0.99);
   -moz-transition-timing-function: cubic-bezier(0.91, 0.01, 0.6, 0.99);
   transition-timing-function: cubic-bezier(0.91, 0.01, 0.6, 0.99);
-}
-//mobile menu
-@media only screen and (max-width: 992px) {
-
 }
 
 // menu hover style
@@ -92,6 +77,9 @@ main {
 .intro {
   animation: intro 800ms ease-out forwards;
 }
+.outro {
+  animation: outro 800ms ease-out forwards;
+}
 .top-area {
   transition: width 0.5s
 }
@@ -105,6 +93,14 @@ main {
   }
   100% {
     transform: translateY(0);
+  }
+}@keyframes outro {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100px);
   }
 }
 .dropdown-menu.show {

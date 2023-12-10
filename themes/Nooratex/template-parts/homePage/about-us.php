@@ -3,7 +3,7 @@
         <div class="col-lg-4 col text-center text-lg-start">
             <p class="text-dark fs-2"><?= get_field('aboutus-banner-content'); ?></p>
             <a class="bg-primary btn text-white"
-               href="<?= get_field('aboutus-btn-link');?>">
+               href="<?= get_field('aboutus-btn-link')['url'];?>">
                 <?= get_field('aboutus-btn-text');?>
             </a>
         </div>

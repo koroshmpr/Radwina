@@ -2,11 +2,11 @@
 global $product;
 
 ?>
-<div class="card p-2">
+<div class="card">
 
     <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($product->ID), 'single-post-thumbnail'); ?>
     <img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>"
-         class=" mx-2 d-block border-0 rounded object-fit img-thumbnail" height="210">
+         class="m-2 d-block border-0 rounded object-fit img-thumbnail w-auto" width="210" height="210">
     <div class="card-body text-lg-start text-center">
         <h6 class="card-title text-dark fs-4">
             <a href="<?php the_permalink(); ?>"

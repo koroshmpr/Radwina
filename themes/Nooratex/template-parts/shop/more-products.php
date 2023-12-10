@@ -1,4 +1,4 @@
-<section class="container py-4 bg-primary rounded-1">
+<section class="container py-4 bg-primary rounded-1 overflow-hidden">
     <div class="product_swiper swiper my-3">
         <?php
 

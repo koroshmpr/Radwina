@@ -1,8 +1,30 @@
 <?php
 global $wp_query;
+
+// Get the current category
+$current_category = get_queried_object();
+
+// Adjust the main query to consider the current category
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$args = array(
+    'post_type'      => 'product',
+    'posts_per_page' => get_option('posts_per_page'),
+    'paged'          => $paged,
+    'tax_query'      => array(
+        array(
+            'taxonomy' => $current_category->taxonomy,
+            'field'    => 'id',
+            'terms'    => $current_category->term_id,
+        ),
+    ),
+);
+
+$query = new WP_Query($args);
+
 $links = paginate_links(array(
     'prev_next' => false,
-    'type' => 'array'
+    'type'      => 'array',
+    'total'     => $query->max_num_pages,
 ));
 
 if ($links) : ?>
@@ -29,33 +51,19 @@ if ($links) : ?>
             endif;
             echo '</ul>';
             ?>
-            <?php
-            $default_posts_per_page = get_option('posts_per_page');
-            $wc_products = wp_count_posts('product')->publish;
-            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-            $totalproducts = $wp_query->post_count;
-            $result = ($paged - 1) * $default_posts_per_page;
-            $eachResult = $paged * $default_posts_per_page;
-            ?>
         </nav>
         <div class="p-3">
             <p class="m-0 smaller-sm-down">
                 نمایش محصولات
-                <b class="px-1"><?= $result + 1 ?>-<?php if($paged == 1 ) {
-                        echo $paged * $totalproducts;
-                    }
-                    if( $paged > 1 && $eachResult < $wc_products){
-                        echo $eachResult;
-                    }
-                    if($paged > 1 && $eachResult > $wc_products){
-                        echo $wc_products;
-                    }
-                    ?></b>
+                <b class="px-1"><?= $query->post_count > 0 ? $query->post_count : 0 ?></b>
                 از
-                <b class="px-1"><?= $wc_products ?></b>
+                <b class="px-1"><?= $query->found_posts ?></b>
                 نتیجه
             </p>
         </div>
     </div>
-<?php endif;
+
+    <?php
+    wp_reset_postdata(); // Restore global post data
+endif;
 ?>

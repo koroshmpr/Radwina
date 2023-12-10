@@ -1,44 +1,9 @@
 import $ from "jquery";
-
 require('./bootstrap');
 import 'swiper/css';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
-import WOW from 'wow.js'
 import Search from "./search";
-
-const wow = new WOW(
-    {
-        boxClass: 'wow',      // animated element css class (default is wow)
-        animateClass: 'animated', // animation css class (default is animated)
-        offset: 100,          // distance to the element when triggering the animation (default is 0)
-        duration: .5,
-        mobile: true,       // trigger animations on mobile devices (default is true)
-        live: true,       // act on asynchronously loaded content (default is true)
-        callback: function (box) {
-            // the callback is fired every time an animation is started
-            // the argument that is passed in is the DOM node being animated
-        },
-        scrollContainer: null,    // optional scroll container selector, otherwise use window,
-        resetAnimation: true,     // reset animation on end (default is true)
-    }
-);
-
-wow.init();
-
-function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
 
 $(document).ready(function () {
         $(".nav-pills > button").hover(function () {
@@ -79,13 +44,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     tabPane.removeClass('active')
                 }
             })
-            console.log(thisIndex)
-            // console.log(thisIndex)
         });
 
     });
     const search = new Search();
-
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     //toggle header on time
@@ -96,19 +71,14 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.classList.remove('scrolled');
         }
     }
-
-    toggleScrollClass();
-
-    //check scroll to take actions on it
     window.addEventListener('scroll', function () {
         toggleScrollClass();
     });
-
     const swiper = new Swiper('.hero_swiper', {
         // Optional parameters
         loop: true,
         effect: 'slide',
-        speed: 2000,
+        speed: 500,
         slidesPerView: 1,
         spaceBetween: 0,
         direction: 'horizontal',
@@ -125,23 +95,6 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         disableOnInteraction: false,
     })
-    const swiper2 = new Swiper('.testimonial_swiper', {
-        // Optional parameters
-        loop: true,
-        effect: 'slide',
-        speed: 3000,
-        slidesPerView: 1.1,
-        centeredSlides: true,
-        spaceBetween: 10,
-        // If we need pagination
-        autoplay: true,
-        breakpoints: {
-            992: {
-                slidesPerView: 4,
-            }
-        },
-        // disableOnInteraction: false,
-    });
     const swiper3 = new Swiper('.related_swiper', {
         // Optional parameters
         loop: true,
@@ -149,34 +102,14 @@ document.addEventListener('DOMContentLoaded', function () {
         autoplay: {
             delay: 3000,
         },
-        speed: 3000,
+        speed: 1500,
         slidesPerView: 1.4,
         spaceBetween: 15,
         centeredSlides: true,
         breakpoints: {
             992: {
-                slidesPerView: 5,
-                centeredSlides: false,
-
-            }
-        },
-        // disableOnInteraction: false,
-    });
-    const swiper4 = new Swiper('.category_swiper', {
-        // Optional parameters
-        loop: true,
-        effect: 'slide',
-        speed: 1000,
-        slidesPerView: 2,
-        spaceBetween: 15,
-        autoplay: {
-            delay: 3000,
-        },
-        breakpoints: {
-            992: {
                 slidesPerView: 6,
-                centeredSlides: true,
-                autoplay: false,
+                centeredSlides: false,
 
             }
         },
@@ -205,14 +138,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const swiper6 = new Swiper('.shop_swiper', {
         // Optional parameters
         loop: true,
-        effect: 'fade',
+        effect: 'slide',
+        grabCursor :true,
         speed: 1000,
         autoplay: {
             delay: 5000,
         },
         slidesPerView: 1,
         spaceBetween: 0,
-        // disableOnInteraction: false,
+        pagination: {
+            el: '.shop-pagination',
+            clickable: true
+        },
+        navigation: {
+            nextEl: '.shop-button-next',
+            prevEl: '.shop-button-prev',
+        },
+        disableOnInteraction: false,
     });
     const swiper7 = new Swiper('.product_swiper', {
         // Optional parameters
@@ -253,37 +195,77 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         disableOnInteraction: false,
     });
-    if (document.getElementById('product-count')) {
-        let productCountEL = document.getElementById('product-count');
-        let productCountInput = document.getElementById('product-quantity');
-        const increaseBtn = document.getElementById('increase-product-btn');
-        const decreaseBtn = document.getElementById('decrease-product-btn');
-        let quantityInputBox = document.getElementById('quantity-input-box');
-        let productCountNum = 1;
 
-        function increaseValue() {
-            productCountNum += 1;
-            productCountEL.innerHTML = productCountNum;
-            productCountInput.value = productCountNum;
-            productCountNum === Number(quantityInputBox.dataset.max) && (increaseBtn.disabled = true);
-            productCountNum > Number(quantityInputBox.dataset.min) && (decreaseBtn.disabled = false);
+    let increaseBtn = document.getElementById('increase-product-btn');
+    let decreaseBtn = document.getElementById('decrease-product-btn');
+    if (increaseBtn || decreaseBtn) {
+        let step = document.getElementById('quantity-input-box').getAttribute('data-step');
+        let stepNum = Number(step);
+        let minQuantity = stepNum;
+        let currentQuantity = stepNum;
+        function updateQuantityDisplay() {
+            document.getElementById('product-count').innerText = currentQuantity;
+            document.getElementById('product-quantity').value = currentQuantity;
         }
 
+        function updateButtonState() {
+            decreaseBtn.disabled = currentQuantity <= minQuantity;
+            // document.getElementById('increase-product-btn').disabled = currentQuantity >= maxQuantity;
+        }
 
-        function decreaseValue() {
-            if (productCountNum > Number(quantityInputBox.dataset.min)) {
-                productCountNum -= 1;
-                productCountEL.innerHTML = productCountNum;
-                productCountInput.value = productCountNum;
+        function handleQuantityChange(change) {
+            currentQuantity += change;
+            updateQuantityDisplay();
+            updateButtonState();
+        }
+
+        decreaseBtn.addEventListener('click', function () {
+            if (stepNum === 1 || currentQuantity >= 10) {
+                handleQuantityChange(-1);
+            } else {
+                if (currentQuantity <= 9) {
+                    let negativeStepNum = -stepNum;
+                    handleQuantityChange(negativeStepNum);
+                }
             }
-            productCountNum === Number(quantityInputBox.dataset.min) && (decreaseBtn.disabled = true);
-            productCountNum < Number(quantityInputBox.dataset.max) && (increaseBtn.disabled = false);
+        });
+
+
+        increaseBtn.addEventListener('click', function () {
+            if (stepNum === 1 || currentQuantity >= 9) {
+                handleQuantityChange(1);
+            } else {
+                handleQuantityChange(stepNum);
+            }
+        });
+
+
+        // Initial setup
+        updateQuantityDisplay();
+        updateButtonState();
+
+    }
+    var cartQuantityInputs = document.querySelectorAll('.cart_quantity_input');
+
+    if (cartQuantityInputs.length > 0) {
+        let stepSize = cartQuantityInputs.getAttribute('step'); // Set a default step size, or retrieve it from somewhere if needed
+        let minQuantity = 3;
+
+        function updateQuantityStep(event) {
+            var currentQuantity = parseInt(event.target.value, 10);
+            var newStep = (currentQuantity < 10) ? stepSize : '1';
+            event.target.step = newStep;
         }
 
-        increaseBtn.addEventListener('click', increaseValue);
+        // Add an event listener to each quantity input to update the step attribute on input change
+        cartQuantityInputs.forEach(function (input) {
+            input.addEventListener('input', updateQuantityStep);
+        });
 
-        decreaseBtn.addEventListener('click', decreaseValue);
+        // Initial setup for all inputs
+        cartQuantityInputs.forEach(function (input) {
+            updateQuantityStep({ target: input }); // Call the function to set the initial step
+        });
     }
-
 
 })

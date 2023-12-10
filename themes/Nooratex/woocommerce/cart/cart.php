@@ -44,7 +44,28 @@ do_action( 'woocommerce_before_cart' ); ?>
                         <?php do_action( 'woocommerce_before_cart_contents' ); ?>
 
                         <?php
+                        $allowed_category_terms = get_field('cat_step', 'option');
+                        $allowed_category_ids = array();
+
+                        if ($allowed_category_terms && is_array($allowed_category_terms)) {
+                            // Loop through the category terms
+                            foreach ($allowed_category_terms as $term) {
+                                // Check if the term object has a term_id property
+                                if (property_exists($term, 'term_id')) {
+                                    // Add the term ID to the array
+                                    $allowed_category_ids[] = $term->term_id;
+                                }
+                            }
+                        }
+                        $stepSize = get_field('cat_step_number', 'option');
                         foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+                            $product_id = $cart_item['product_id'];
+                            $product_categories = wp_get_post_terms($product_id, 'product_cat', array('fields' => 'ids'));
+
+                            // Check if there is an intersection between allowed and product categories
+                            $minValue = count(array_intersect($allowed_category_ids, $product_categories)) > 0 ? $stepSize : 1;
+                            $titleAllow = count(array_intersect($allowed_category_ids, $product_categories)) > 0 ? 'متر' : '';
+
                             $_product   = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
                             $product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
 
@@ -91,7 +112,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                                         ?>
                                     </td>
 
-                                    <td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
+                                    <td class="product-quantity d-flex align-items-center" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
                                         <?php
                                         if ( $_product->is_sold_individually() ) {
                                             $product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );
@@ -101,8 +122,10 @@ do_action( 'woocommerce_before_cart' ); ?>
                                                     'input_name'   => "cart[{$cart_item_key}][qty]",
                                                     'input_value'  => $cart_item['quantity'],
                                                     'max_value'    => $_product->get_max_purchase_quantity(),
-                                                    'min_value'    => '0',
+                                                    'min_value'    => $minValue,
                                                     'product_name' => $_product->get_name(),
+                                                    'input_id'     => 'cart_quantity_input', // Specify the ID of your quantity input field
+                                                    'step' => $minValue
                                                 ),
                                                 $_product,
                                                 false
@@ -111,6 +134,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
                                         echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item ); // PHPCS: XSS ok.
                                         ?>
+                                        <span class="ms-2 fs-6"><?= $titleAllow; ?></span>
                                     </td>
 
                                     <td class="product-subtotal" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">

@@ -7,7 +7,7 @@
                placeholder="جستجو"
                aria-label="Search">
         <button type="submit" class=" bg-primary search-submit text-white btn px-3 lh-1 border border-white
-        border-start-0">
+        border-start-0" aria-label="Search">
             <i class="bi bi-search fs-5 small-sm-down"></i>
         </button>
     </div>

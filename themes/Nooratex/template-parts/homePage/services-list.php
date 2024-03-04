@@ -1,4 +1,4 @@
-<section class="container mt-3 py-3">
+<section class="container mt-3 mt-lg-5 py-5">
     <div class="row row-cols-2 row-cols-lg-6 px-lg-5 g-2 justify-content-center">
         <?php
         $j = 0;

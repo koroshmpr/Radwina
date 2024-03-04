@@ -32,7 +32,7 @@
     //          main menu
     get_template_part('template-parts/layout/header/mainHeader');
     //          bottom menu
-    if (!is_front_page()) {
+    if (!is_front_page() && !is_page_template('form.php')) {
         get_template_part('template-parts/layout/header/bottomArea');
     }
     ?>

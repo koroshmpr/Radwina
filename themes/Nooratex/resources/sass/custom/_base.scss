@@ -49,6 +49,9 @@ a {
 .vh-50 {
   height: 50vh!important;
 }
+.z-0 {
+  z-index: 0;
+}
 .min-vh-75 {
   min-height: 75vh;
 }
@@ -114,7 +117,7 @@ i {
   height:150px
 }.h-100p {
   width:auto;
-  height:100px
+  height:130px
 }
 .text-shadow {
   text-shadow: 0px 2px #575656;
@@ -125,4 +128,40 @@ i {
 .gform_button {
   @extend .btn , .bg-primary;
   color: white;
+}
+.rounded-bottom-curve {
+  border-radius: 0px 0px 50px 50px;
+}
+.accordion-preview {
+  button:not(.collapsed) {
+    &:before {
+      content: 'بستن';
+      position: absolute;
+      background: white;
+      left: 0;
+      right: 0;
+    }
+  }
+  .collapse:not(.show) {
+    display: block;
+    .accordion-body {
+      max-height: 90px;
+      position: relative;
+      overflow: hidden;
+
+      &:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        content: "";
+        background: linear-gradient(to top,
+                rgba(255, 255, 255, 1) 5%,
+                rgba(255, 255, 255, 0) 60%
+        );
+        pointer-events: none; /* so the text is still selectable */
+      }
+    }
+  }
 }

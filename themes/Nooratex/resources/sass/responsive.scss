@@ -1,7 +1,19 @@
 @include media-breakpoint-up(lg) {
+  .form-container {
+    transform: translateY(-250px);
+  }
+  .min-vh-lg-80 {
+    min-height: 80vh !important;
+  }
 
 }
 @include media-breakpoint-down(lg) {
+  .form-container {
+    transform: translateY(-110px);
+  }
+  .-min-vh-lg-60 {
+    min-height: 60vh !important;
+  }
   .h-100p {
     height: 80px!important;
   }

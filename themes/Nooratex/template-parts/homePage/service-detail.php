@@ -14,31 +14,32 @@ $services_post = get_page_by_path($service_slug, OBJECT, 'services');
 if ($services_post) {
 
     ?>
-    <section class="mt-4">
+    <section class="my-4">
         <div class="container card border-0 mb-3 px-0 animate__animated animate__backInRight">
             <div class="row gy-4 align-items-center">
                 <?php
                 $customImage = get_field('custom-img');
                 $customeImg = get_field('custom-img-services');
                 $type = get_field('custom_img_type');
+                $imgSize = 6 ;
                 if ($customImage) {
                     if ($type == 'svg') { ?>
-                        <div class="col-lg-6 text-center">
+                        <div class="col-lg-<?= $imgSize; ?> text-center">
                             <?= get_field('custom-svg-services'); ?>
                         </div>
                     <?php }
                     if ($type == 'image') { ?>
-                        <img src="<?= $customeImg['url']; ?>" class="col-lg-6 object-fit rounded-start" height="500"
+                        <img src="<?= $customeImg['url']; ?>" class="col-lg-<?= $imgSize; ?> object-fit rounded-start" height="500"
                              alt="<?= $services_post->post_title; ?>">
                     <?php }
                 } else { ?>
-                    <img src="<?= $service_thumb_url ?>" class="col-lg-6 object-fit rounded-start" height="500"
+                    <img src="<?= $service_thumb_url ?>" class="col-lg-<?= $imgSize; ?> object-fit rounded-start" height="500"
                          alt="<?= $services_post->post_title; ?>">
                 <?php }; ?>
                 <div class="col-lg-6">
-                    <div class="card-body mt-2 pe-lg-5">
+                    <div class="card-body mt-2">
                         <h5 class="card-title fw-bold fs-1 text-center text-lg-start"><?= $services_post->post_title; ?></h5>
-                        <p class="card-text text-justify"><?= $services_post->post_content; ?></p>
+                        <p class="card-text fs-5 py-3 text-justify"><?= $services_post->post_content; ?></p>
                         <a class="stretched-link btn bg-primary text-white rounded-2"
                            href="<?= $customeLink ? $customeLink['url'] : $permalink; ?>">
                             بیشتر بدانید

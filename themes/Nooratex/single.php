@@ -10,9 +10,9 @@ while (have_posts()) :
     </section>
     <section class="container py-2">
         <div class="row justify-content-between">
-            <div class="col-lg-7 col-12 text-dark text-justify">
-                <h1><?php the_title(); ?></h1>
-                <article class="py-4">
+            <div class="col-lg-8 pe-lg-5 col-12 text-dark text-justify">
+                <h1 class="fw-bold"><?php the_title(); ?></h1>
+                <article class="py-4 post-content">
                     <?php the_content(); ?>
                 </article>
                 <div class="my-2">

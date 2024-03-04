@@ -91,6 +91,23 @@
 article a {
   @extend .text-secondary , .fw-bold;
 }
+//single post
+.post-content {
+  *:has(img) {
+    max-width: 100%;
+  }
+  a {
+    color: $primary!important;
+  }
+  p:has(img) {
+    img {
+    max-width: 100%;
+    }
+    text-align: center;
+  }
+  line-height: 2;
+  font-size: 17px;
+}
 //comment
 .wpd-comment-wrap {
   border: 1px solid #d6d5d5;
@@ -461,14 +478,11 @@ nav {
   height: 18px;
   text-align: center;
 }
-input#search-form-Desktop::placeholder {
-  color: white;
-}
 .cols-3 {
   grid-template-columns: repeat(3, auto);
 }
 #myTab .nav-link.active , .hover-bg a:hover{
-@extend .bg-white , .bg-opacity-10;
+@extend .bg-dark , .bg-opacity-10;
 }
 #seconds , #minutes , #hours , #days {
   min-width: 50px;

@@ -58,36 +58,42 @@
         <!--            logo and social-->
         <div class="col-12 col-lg-5 p-md-5 p-lg-2 text-center text-md-start">
             <div class="row justify-content-center justify-content-lg-start align-items-stretch h-100 g-lg-5">
-                <div class="col-md-6 col-9 animate__animated animate__slideInLeft">
+                <div class="col-md-5 col-9 px-lg-0 animate__animated animate__slideInLeft">
                     <h6 class="text-primary fw-bold fs-4">راه های ارتباطی</h6>
                     <address class="py-2 fw-bold text-dark d-flex gap-3 align-items-center mb-0">
                         <i class="bi bi-geo-alt-fill me-2 text-primary"></i>
                         <?= get_field('address', 'option'); ?>
                     </address>
                     <a href="tel:<?= get_field('phone_number', 'option'); ?>"
-                       class="py-2 fw-bold text-dark d-flex gap-3 align-items-center">
+                       class="py-2 fw-bold text-dark d-flex gap-3 align-items-center justify-content-between">
+                        <div class="d-flex gap-2">
                         <i class="bi bi-telephone-fill me-2 text-primary"></i>
                         <h6 class="text-primary fw-bolder m-0">شماره تلفن ثابت : </h6>
+                        </div>
                         <?= get_field('phone_number', 'option'); ?>
                     </a>
                     <a href="tel:<?= get_field('phone_management', 'option'); ?>"
-                       class="py-2 fw-bold text-dark d-flex gap-3 align-items-center">
-                        <i class="bi bi-telephone-fill me-2 text-primary"></i>
-                        <h6 class="text-primary fw-bolder m-0">شماره موبایل مدیریت : </h6>
+                       class="py-2 fw-bold text-dark d-flex gap-3 align-items-center justify-content-between">
+                        <div class="d-flex gap-2">
+                            <i class="bi bi-telephone-fill me-2 text-primary"></i>
+                            <h6 class="text-primary fw-bolder m-0">شماره موبایل مدیریت : </h6>
+                        </div>
                         <?= get_field('phone_management', 'option'); ?>
                     </a>
                     <a href="mailto:<?= get_field('email', 'option'); ?>"
-                       class="py-2 mb-2 fw-bold text-dark d-flex gap-3 align-items-center">
-                        <i class="bi bi-envelope-fill me-2 text-primary"></i>
-                        <h6 class="text-primary fw-bolder m-0">ایمیل : </h6>
+                       class="py-2 mb-2 fw-bold text-dark d-flex gap-3 align-items-center justify-content-between">
+                        <div class="d-flex gap-2">
+                            <i class="bi bi-envelope-fill me-2 text-primary"></i>
+                            <h6 class="text-primary fw-bolder m-0">ایمیل : </h6>
+                        </div>
                         <?= get_field('email', 'option'); ?>
                     </a>
                     <?php
                     $socialSize = '17';
-                    $args = array (
+                    $args = array(
                         'size' => $socialSize
                     );
-                    get_template_part('template-parts/social-media' , null , $args); ?>
+                    get_template_part('template-parts/social-media', null, $args); ?>
                 </div>
                 <div class="col-md-6 col-11 animate__animated animate__slideInRight">
                     <?= get_field('map', 'option'); ?>

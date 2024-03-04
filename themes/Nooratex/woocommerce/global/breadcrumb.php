@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
 
 <section class="container" id="breadcrumb">
     <div class="container-xl mb-2">
-        <div class="hstack align-items-center justify-content-start align-items-center flex-wrap gap-4 pt-5">
+        <div class="hstack align-items-center justify-content-start align-items-center flex-wrap gap-4">
             <?php
             if (!empty($breadcrumb)) {
 

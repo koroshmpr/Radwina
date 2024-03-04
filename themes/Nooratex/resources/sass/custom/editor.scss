@@ -11,7 +11,7 @@ ol {
 ul, ol {
     padding: 0;
     list-style-position: inside !important;
-    line-height: 1.8;
+    line-height:2;
 }
 .alert  {
     line-height: 3;
@@ -20,4 +20,7 @@ ul, ol {
     .swiper-button-next:after , .swiper-button-prev:after {
         display: none;
     }
+}
+strong {
+    font-weight: 700;
 }

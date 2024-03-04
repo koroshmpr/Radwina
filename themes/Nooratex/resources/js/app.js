@@ -14,15 +14,9 @@ $(document).ready(function () {
         })
         $(window).scroll(function () { // check if scroll event happened
             if ($(document).scrollTop() > 30) { // check if user scrolled more than 50 from top of the browser window
-                $('.site-header').addClass('bg-primary');
-                $('.category-dropdown').addClass('bg-primary');
                 $('.backTo_Top').removeClass('outro');
 
             } else {
-                if (window.location.pathname == '/') {
-                    $('.site-header').removeClass('bg-primary');
-                    $('.category-dropdown').removeClass('bg-primary');
-                }
                 $('.backTo_Top').addClass('outro');
             }
         })
@@ -161,15 +155,15 @@ document.addEventListener('DOMContentLoaded', function () {
         loop: false,
         effect: 'slide',
         speed: 1000,
-        slidesPerView: 1,
+        slidesPerView: 1.3,
+        centeredSlides: false,
+        spaceBetween: 20,
         autoplay: {
             delay: 3000,
         },
         breakpoints: {
             992: {
                 slidesPerView: 4,
-                spaceBetween: 15,
-                centeredSlides: false,
             }
         },
         // disableOnInteraction: false,

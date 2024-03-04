@@ -23,7 +23,7 @@
          alt="<?= get_field('banner_menu_image', 'option')['title']; ?>">
     <div class="col-6 z-top" style="color:<?= get_field('banner_menu_text_color', 'option'); ?>">
         <span style="background-color:<?= get_field('banner_menu_badge_color', 'option'); ?>"
-              class="py-1 px-2 rounded"><?= get_field('banner_menu_badge', 'option'); ?></span>
+              class="py-1 px-2 text-white rounded"><?= get_field('banner_menu_badge', 'option'); ?></span>
         <h5 class="my-3 fs-3 fw-bolder"><?= get_field('banner_menu_title', 'option'); ?></h5>
         <p style="color:<?= get_field('banner_menu_text_color'); ?>"
         ><?= get_field('banner_menu_content', 'option'); ?></p>

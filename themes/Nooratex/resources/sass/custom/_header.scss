@@ -36,7 +36,7 @@ main {
   right:0;
   transform: scaleX(0);
   transform-origin: right;
-  background-color: $warning;
+  background-color: $primary;
 }
 
 .current-menu-item a,
@@ -44,9 +44,25 @@ main {
   transform: scaleX(1);
   opacity: 1 !important;
 }
-
+body.home:not(.scrolled) {
+  //.site-header {
+  //  @extend .bg-opacity-75;
+  //}
+  //input#search-form-Desktop::placeholder {
+  //  color: white;
+  //}
+}
+body:not(.scrolled.home) input#search-form-Desktop::placeholder {
+  color: #111111;
+}
 //back to top buttom
 .scrolled {
+  //.site-header {
+  //  @extend .shadow-sm;
+  //}
+  //input#search-form-Desktop::placeholder {
+  //  color: #111111;
+  //}
   .backTo_Top {
     @extend .intro
   }

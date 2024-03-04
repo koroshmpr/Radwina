@@ -1,11 +1,11 @@
 <div class="bg-light bg-opacity-25 rounded my-1 dropdown">
-    <button href="#" class="btn dropdown-toggle text-white" id="dropdownMenuButton"
+    <button href="#" class="btn dropdown-toggle text-dark border border-info" id="dropdownMenuButton"
             type="button" data-bs-toggle="dropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
         <i class="bi bi-list me-1"></i>
         خرید بر اساس دسته بندی
     </button>
-    <div class="category-dropdown <?= is_front_page() ? 'bg-grey-light' : 'bg-primary' ;?> dropdown-menu container mt-2" aria-labelledby="dropdownMenuButton">
+    <div class="category-dropdown bg-white dropdown-menu container mt-2" aria-labelledby="dropdownMenuButton">
         <?php
         $children = get_categories(array(
             'taxonomy' => 'product_cat',
@@ -24,7 +24,7 @@
                                 $thumbnail_id = get_term_meta($subcat->term_id, 'thumbnail_id', true); ?>
                                 <a data-bs-toggle="pill"
                                    href="#category_tab<?= $key; ?>"
-                                   class="<?= $key == 0 ? 'active ' : ' '; ?>d-flex gap-2 align-items-center nav-link text-white fw-bold category-link">
+                                   class="<?= $key == 0 ? 'active ' : ' '; ?>d-flex gap-2 align-items-center nav-link text-dark fw-bold category-link">
                                     <?php if (wp_get_attachment_url($thumbnail_id) ) { ?>
                                     <img class="object-fit rounded-1" width="40" height="40"
                                          src="<?= wp_get_attachment_url($thumbnail_id); ?>"
@@ -66,7 +66,7 @@
                             $loop = new WP_Query($args);
                             if ($loop->have_posts()) {
                                 while ($loop->have_posts()) : $loop->the_post(); ?>
-                                    <a class="d-flex gap-2 align-items-center p-1 rounded-1" href="<?php the_permalink(); ?>">
+                                    <a class="d-flex gap-2 align-items-center p-1 text-dark text-opacity-75 rounded-1" href="<?php the_permalink(); ?>">
                                         <img class="rounded-1 lazy lazy-load-image" width="55" height="55" data-src="<?= the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
                                         <?php the_title(); ?>
                                     </a>

@@ -33,7 +33,8 @@ get_template_part('template-parts/shop/threeColsBanner');
 get_template_part('template-parts/shop/category-Columns-4');
 get_template_part('template-parts/shop/products-columns-6');
 get_template_part('template-parts/shop/shop-coupen');
-get_template_part('template-parts/shop/shop-cta');
+get_template_part('template-parts/homePage/about-us');
+//get_template_part('template-parts/shop/shop-cta');
 ?>
     <!--    {{--  about and order banner  --}}-->
 <!--    <section id="archivePage">-->

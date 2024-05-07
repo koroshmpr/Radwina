@@ -27,10 +27,14 @@ $links = paginate_links(array(
     'total'     => $query->max_num_pages,
 ));
 
-if ($links) : ?>
-    <div class="d-grid d-lg-flex flex-wrap justify-content-lg-between align-items-center justify-content-center py-3 flex-wrap gap-2 border my-4 w-100 rounded">
+if ($links) :
+    // Calculate start and end indices of products being shown on the current page
+    $start_index = ($paged - 1) * get_option('posts_per_page') + 1;
+    $end_index = min($start_index + $query->post_count - 1, $query->found_posts);
+    ?>
+    <div class="d-grid d-lg-flex flex-wrap px-3 justify-content-lg-between align-items-center justify-content-center py-3 flex-wrap gap-2 border my-4 w-100 rounded">
         <nav aria-label="pagination">
-            <?php echo '<ul class="pagination ms-3 m-0 align-items-center">';
+            <?php echo '<ul class="pagination justify-content-center m-0 align-items-center">';
 
             // get_previous_posts_link will return a string or void if no link is set.
             if ($prev_posts_link = get_previous_posts_link(__('<i class="bi bi-chevron-right fw-bold text-white"></i>'))) :
@@ -55,7 +59,9 @@ if ($links) : ?>
         <div>
             <p class="m-0 smaller-sm-down">
                 نمایش محصولات
-                <b class="px-1"><?= $query->post_count > 0 ? $query->post_count : 0 ?></b>
+                <b class="px-1"><?= $start_index ?></b>
+                تا
+                <b class="px-1"><?= $end_index ?></b>
                 از
                 <b class="px-1"><?= $query->found_posts ?></b>
                 نتیجه

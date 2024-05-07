@@ -70,9 +70,9 @@
     </div>
 
 </nav>
-<div class="offcanvas offcanvas-end bg-primary" tabindex="-1" id="offcanvasNavbar"
+<div class="offcanvas offcanvas-end bg-transparent ps-5" tabindex="-1" id="offcanvasNavbar"
      aria-labelledby="offcanvasNavbarLabel">
-    <div class="offcanvas-header">
+    <div class="offcanvas-header bg-primary">
         <a class="offcanvas-title logo-brand" id="offcanvasNavbarLabel" href="/">
             <?php if (get_field('logo_type', 'option') == 'image') { ?>
                 <a class="logo-brand col-1" href="/">
@@ -88,7 +88,7 @@
         </a>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
+    <div class="offcanvas-body bg-primary">
         <?php
         $locations = get_nav_menu_locations();
         $menu = wp_get_nav_menu_object($locations['headerMenuLocation']);

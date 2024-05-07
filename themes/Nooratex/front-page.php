@@ -29,7 +29,9 @@ get_template_part('template-parts/shop/more-products');
 //    coupon
 get_template_part('template-parts/homePage/about-us');
 //    coupon
-get_template_part('template-parts/homePage/coupon');
+if (get_field('coupen_type')) :
+    get_template_part('template-parts/homePage/coupon');
+endif;
 //    counseling-form
 get_template_part('template-parts/homePage/Counseling-form');
 //    blog

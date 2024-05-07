@@ -28,4 +28,4 @@ $average = $product->get_average_rating();
 
 ?>
 
-<?php the_title('<h1 class="text-center text-lg-start fw-bold">', '</h1>');
+<?php the_title('<h1 class="text-center text-lg-start fw-bold ltr">', '</h1>');

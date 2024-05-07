@@ -8,7 +8,7 @@ global $product;
     <img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>"
          class="m-2 d-block border-0 rounded object-fit img-thumbnail w-auto" width="210" height="210">
     <div class="card-body text-lg-start text-center">
-        <h6 class="card-title text-dark fs-4">
+        <h6 class="card-title text-dark <?= is_front_page() ? 'fs-4 ' : 'fs-5 '; ?>ltr text-center text-lg-start" <?= !is_front_page() ? 'style="min-height:45px"' : ''; ?> >
             <a href="<?php the_permalink(); ?>"
                class="stretched-link text-dark fw-bold"><?php the_title(); ?></a>
         </h6>

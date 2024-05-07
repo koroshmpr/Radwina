@@ -3,8 +3,15 @@
         <div class="swiper-wrapper">
             <?php while (have_rows('shop-slider', 'option')):
             the_row(); ?>
-            <div class="swiper-slide hero_slider"
-                 style="background-image: url('<?= get_sub_field('shop-slide-image', 'option')['url']; ?>')">
+            <div class="swiper-slide hero_slider">
+                <picture>
+                    <?php $imgMobile = get_sub_field('shop-slide-image_mobile', 'option');
+                    $imgDesktop = get_sub_field('shop-slide-image', 'option');
+                    ?>
+                    <source media="(min-width: 576px)" srcset="<?= $imgDesktop['url'] ?? ''; ?>">
+                    <source media="(max-width: 575px)" srcset="<?= isset($imgMobile) ? $imgMobile['url'] : (isset($imgDesktop) ? $imgDesktop['url'] : '') ?>">
+                    <img class="img-fluid position-absolute top-0 start-0 w-100 h-100 z--1 object-fit" src="<?= $imgDesktop['url'] ?? ''; ?>" alt="<?= $imgDesktop['title']; ?>">
+                </picture>
             </div>
         <?php
         endwhile; ?>

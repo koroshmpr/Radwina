@@ -17,7 +17,7 @@ global $product;
     <img src="<?php echo $image[0]; ?>"
          class=" mx-auto d-block border-0 rounded-1" height="100">
     <div class="card-body px-1">
-        <h6 class="card-title text-dark">
+        <h6 class="card-title text-dark text-center ltr text-lg-start">
             <a href="<?php the_permalink(); ?>"
                class="stretched-link text-dark fw-bold"><?php the_title(); ?></a>
         </h6>

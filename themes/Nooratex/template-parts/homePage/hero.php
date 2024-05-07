@@ -3,8 +3,15 @@
             <?php while (have_rows('hero_slider')):
                 the_row();
                 if (get_sub_field('slide_type') == 'image') { ?>
-                    <div class="swiper-slide d-flex justify-content-center align-items-center hero_slider h-100"
-                         style="background-image: url('<?= get_sub_field('hero_image')['url']; ?>')">
+                    <div class="swiper-slide d-flex justify-content-center align-items-center hero_slider h-100">
+                        <picture>
+                            <?php $imgMobile = get_sub_field('hero_image_mobile');
+                            $imgDesktop = get_sub_field('hero_image');
+                            ?>
+                            <source media="(min-width: 576px)" srcset="<?= $imgDesktop['url'] ?? ''; ?>">
+                            <source media="(max-width: 575px)" srcset="<?= isset($imgMobile) ? $imgMobile['url'] : (isset($imgDesktop) ? $imgDesktop['url'] : '') ?>">
+                            <img class="img-fluid position-absolute top-0 start-0 w-100 h-100 z--1 object-fit" src="<?= $imgDesktop['url'] ?? ''; ?>" alt="<?= $imgDesktop['title']; ?>">
+                        </picture>
                         <div class="col-12 d-flex flex-column align-items-center">
                             <h5 class="p-4 mb-0 w-100 bg-dark bg-opacity-10 text-center text-white fw-bold display-2 animate__animated animate__fadeInUp shadow-sm">
                                 <?= get_sub_field('hero_title'); ?></h5>

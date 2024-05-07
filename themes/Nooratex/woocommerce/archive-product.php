@@ -32,39 +32,41 @@ get_header('shop');
 get_template_part('template-parts/shop/threeColsBanner');
 get_template_part('template-parts/shop/category-Columns-4');
 get_template_part('template-parts/shop/products-columns-6');
-get_template_part('template-parts/shop/shop-coupen');
+if (get_field('shop-coupen_type' , 'option')) :
+    get_template_part('template-parts/shop/shop-coupen');
+endif;
 get_template_part('template-parts/homePage/about-us');
 //get_template_part('template-parts/shop/shop-cta');
 ?>
     <!--    {{--  about and order banner  --}}-->
-<!--    <section id="archivePage">-->
-<!--        <div class="container-xl">-->
-<!--            <div class="row pb-5">-->
-<!--                                {{-- filters sidebar for lg up --}}-->
-<!--                <div class="col-lg-3">-->
-<!--                    --><?php
+    <!--    <section id="archivePage">-->
+    <!--        <div class="container-xl">-->
+    <!--            <div class="row pb-5">-->
+    <!--                                {{-- filters sidebar for lg up --}}-->
+    <!--                <div class="col-lg-3">-->
+    <!--                    --><?php
 //                    get_template_part('template-parts/sidebar')
 //                    ?>
-<!--                </div>-->
-<!---->
-<!--                <div class="col-lg-9 row g-lg-3 g-2 row-cols-xl-4 row-cols-lg-3 row-cols-md-4 row-cols-2 m-0"-->
-<!--                     id="ajaxFilter">-->
-<!--                    --><?php //if (have_posts()) {
+    <!--                </div>-->
+    <!---->
+    <!--                <div class="col-lg-9 row g-lg-3 g-2 row-cols-xl-4 row-cols-lg-3 row-cols-md-4 row-cols-2 m-0"-->
+    <!--                     id="ajaxFilter">-->
+    <!--                    --><?php //if (have_posts()) {
 //                        while (have_posts()) : the_post(); ?>
-<!--                            <article>-->
-<!--                                --><?php //wc_get_template_part('content', 'single-card'); ?>
-<!--                            </article>-->
-<!--                        --><?php //endwhile;
+    <!--                            <article>-->
+    <!--                                --><?php //wc_get_template_part('content', 'single-card'); ?>
+    <!--                            </article>-->
+    <!--                        --><?php //endwhile;
 //                    } else {
 //                        echo __('هیچ محصولی یافت نشد');
 //                    }
 //                    wp_reset_postdata();
 //                    ?>
-<!--                    --><?php //get_template_part('template-parts/pagination') ?>
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
+    <!--                    --><?php //get_template_part('template-parts/pagination') ?>
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </section>-->
 <?php
 
 

@@ -28,7 +28,7 @@ $links = paginate_links(array(
 ));
 
 if ($links) : ?>
-    <div class="hstack flex-wrap justify-content-between flex-wrap gap-2 border my-4 w-100 rounded">
+    <div class="d-grid d-lg-flex flex-wrap justify-content-lg-between align-items-center justify-content-center py-3 flex-wrap gap-2 border my-4 w-100 rounded">
         <nav aria-label="pagination">
             <?php echo '<ul class="pagination ms-3 m-0 align-items-center">';
 
@@ -52,7 +52,7 @@ if ($links) : ?>
             echo '</ul>';
             ?>
         </nav>
-        <div class="p-3">
+        <div>
             <p class="m-0 smaller-sm-down">
                 نمایش محصولات
                 <b class="px-1"><?= $query->post_count > 0 ? $query->post_count : 0 ?></b>

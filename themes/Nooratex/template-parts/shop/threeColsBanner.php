@@ -1,5 +1,6 @@
 <section class="container my-5 px-0">
-    <h4 class="text-center fw-bolder fs-2">محصولات و خدمات<span class="fw-bolder fs-1 text-primary "> رادوینا</span></h4>
+    <h4 class="text-center fw-bolder fs-2">محصولات و خدمات<span class="fw-bolder fs-1 text-primary "> رادوینا</span>
+    </h4>
     <p class="text-dark text-opacity-75 text-center">پرطرفدارترین دسته ها در یک نگاه</p>
     <div class="p-4 px-lg-0 row row-cols-lg-3 row-cols-1 align-items-center justify-content-lg-between justify-content-center gap-3">
         <?php
@@ -9,14 +10,31 @@
         // Check if there are selected banners
         if ($banners) {
             // Loop through the selected banners
-            foreach ($banners as $banner) {
+            foreach ($banners
+
+                     as $banner) {
                 $title = $banner['shop_banner_title'];
                 $link = $banner['shop_banner_link'];
-                $img = $banner['shop_banner_img'];
-                ?>
-                <a class="rounded-3 shadow-sm row align-items-end p-4 animate__animated animate__zoomIn"
-                   style="height:350px;background-size: contain!important; background:url('<?= esc_url($img['url']) ?>')"
-                   href="<?= esc_url($link['url'] ?? ''); ?>">
+                $imgDesktop = $banner['shop_banner_img'];
+                $imgMobile = $banner['shop_banner_img_mobile'];
+                $linkAllow = $banner['shop_banner_link_allow'];
+                if ($linkAllow) :
+                    ?>
+                    <a href="<?= esc_url($link['url'] ?? ''); ?>"
+                <?php endif;
+                if (!$linkAllow) : ?>
+                    <div
+                <?php endif; ?>
+                class="rounded-3 shadow-sm row align-items-end p-4 animate__animated animate__zoomIn"
+                style="height:350px;background-size: contain!important;">
+                <picture>
+                    <source media="(min-width: 576px)" srcset="<?= $imgDesktop['url'] ?? ''; ?>">
+                    <source media="(max-width: 575px)"
+                            srcset="<?= isset($imgMobile) ? $imgMobile['url'] : (isset($imgDesktop) ? $imgDesktop['url'] : '') ?>">
+                    <img class="img-fluid position-absolute top-0 start-0 w-100 h-100 z--1 object-fit"
+                         src="<?= $imgDesktop['url'] ?? ''; ?>" alt="<?= $imgDesktop['title']; ?>">
+                </picture>
+                <?php if ($linkAllow) : ?>
                     <div class="d-flex justify-content-between bg-white p-3 rounded-2">
                         <h4 class="text-dark mb-0"><?= esc_html($title); ?></h4>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -25,7 +43,13 @@
                                   d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                         </svg>
                     </div>
-                </a>
+                <?php endif;
+                if ($linkAllow) : ?>
+                    </a>
+                <?php endif;
+                if (!$linkAllow) : ?>
+                    </div>
+                <?php endif; ?>
             <?php }
         }
         ?>

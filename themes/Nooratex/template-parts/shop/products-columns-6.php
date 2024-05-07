@@ -1,22 +1,19 @@
 <section class="container py-4 my-4 px-3 bg-primary rounded-1" id="6cols_product">
     <div class="related_swiper swiper my-3">
-<!--        --><?php
-//
-//        $args = array(
-//            'post_type' => 'product',
-//            'post_status' => 'publish',
-//            'order' => 'ASC',
-//            'orderby' => 'rand',
-//            'posts_per_page' => '6',
-//            'ignore_sticky_posts' => true
-//        );
-//        $loop = new WP_Query($args); ?>
         <div class="swiper-wrapper">
             <?php
-            if (have_posts()) {
-                while (have_posts()) : the_post();?>
+            $args = array(
+                'post_type'      => 'product', // Assuming your products are of type 'product'
+                'posts_per_page' => 12, // Limit to 12 posts
+                'orderby'        => 'rand', // Order randomly
+            );
+
+            $query = new WP_Query($args);
+
+            if ($query->have_posts()) {
+                while ($query->have_posts()) : $query->the_post();?>
                     <div class="swiper-slide">
-                        <?php     get_template_part('template-parts/shop/single-card'); ?>
+                        <?php get_template_part('template-parts/shop/single-card'); ?>
                     </div>
                 <?php endwhile;
             } else {
@@ -24,6 +21,7 @@
             }
             wp_reset_postdata();
             ?>
+
         </div>
     </div>
 

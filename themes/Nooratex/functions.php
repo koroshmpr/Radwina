@@ -523,27 +523,3 @@ function get_category_id_by_slug() {
 
     wp_die();
 }
-
-//function custom_post_type_args( $args, $post_type ) {
-//
-//    // Change 'project' to the slug of your custom post type
-//
-//    if ( 'portfolio' === $post_type ) {
-//
-//        // Set the with_front parameter to false
-//
-//        $args['rewrite']['with_front'] = false;
-//
-//    }
-//
-//    if ( 'service' === $post_type ) {
-//
-//        // Set the with_front parameter to false
-//
-//        $args['rewrite']['with_front'] = false;
-//
-//    }
-//
-//    return $args;
-//
-//}

@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
         centeredSlides: true,
         breakpoints: {
             992: {
-                slidesPerView: 6,
+                slidesPerView: 5,
                 centeredSlides: false,
 
             }

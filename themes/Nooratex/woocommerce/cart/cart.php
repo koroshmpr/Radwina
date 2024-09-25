@@ -211,10 +211,9 @@ do_action( 'woocommerce_before_cart' ); ?>
                             </div>
 
                             <hr>
-
                             <div class="hstack justify-content-between">
                                 <span>هزینه ارسال</span>
-                                <span class="text-end">25،000 تومان</span>
+                                <span class="text-end"><?php wc_cart_totals_shipping_html(); ?></span>
                             </div>
 
                             <hr>

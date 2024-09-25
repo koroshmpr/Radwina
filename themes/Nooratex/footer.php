@@ -32,7 +32,7 @@ if ($page_description) { ?>
     //          main footer
     get_template_part('template-parts/layout/footer/mainFooter');
     //          copyright
-    get_template_part('template-parts/layout/footer/copyright');
+//    get_template_part('template-parts/layout/footer/copyright');
     ?>
 </footer>
 <?php if (is_singular('product')) { ?>

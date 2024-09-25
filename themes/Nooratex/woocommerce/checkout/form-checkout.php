@@ -47,7 +47,7 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
                     <div class="mb-5">
                         <?php do_action('woocommerce_checkout_billing'); ?>
                     </div>
-                    <div class="vstack gap-4">
+                    <div class="vstack gap-4 cart_item">
                         <?php
                         foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) { ?>
                             <div class="card">
@@ -83,7 +83,7 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
                                                         echo wp_kses_post(apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key) . '&nbsp;');
                                                     } else {
                                                         echo wp_kses_post(apply_filters('woocommerce_cart_item_name',
-                                                            sprintf('<a class="fs-3 m-0 small-sm-down text-dark" href="%s">%s</a>', esc_url
+                                                            sprintf('<a class="fs-6 m-0 small-sm-down text-dark" href="%s">%s</a>', esc_url
                                                             ($product_permalink), $_product->get_name()), $cart_item, $cart_item_key));
                                                     }
 
@@ -100,7 +100,7 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
                                                 </td>
                                             </div>
 
-                                            <div class="col">
+                                            <div class="col-xl col-3">
                                                 <div class="row g-2 justify-content-start flex-wrap py-2 py-lg-0">
                                                     <div class="col">
                                                         <td class="product-quantity"
@@ -181,5 +181,13 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
     <?php do_action('woocommerce_checkout_after_order_review'); ?>
 
 </form>
-
+<script>
+    jQuery(document).ready(function ($) {
+        // Listen for changes on the billing_state select dropdown
+        $('#billing_state').on('change', function () {
+            // Trigger WooCommerce to update the checkout totals
+            $('body').trigger('update_checkout');
+        });
+    });
+</script>
 <?php do_action('woocommerce_after_checkout_form', $checkout); ?>

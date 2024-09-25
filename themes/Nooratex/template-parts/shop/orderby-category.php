@@ -8,7 +8,7 @@
             'rating'     => __('امتیاز', 'woocommerce'),
             'date-asc'   => __('جدیدترین', 'woocommerce'),
             'date-desc'  => __('قدیمی‌ترین', 'woocommerce'),
-            'price'      => __('ارزاتترین', 'woocommerce'),
+            'price'      => __('ارزانترین', 'woocommerce'),
             'price-desc' => __('گرانترین', 'woocommerce')
         );
 

@@ -21,13 +21,9 @@ defined('ABSPATH') || exit;
 
 <div class="woocommerce-billing-fields">
     <?php if (wc_ship_to_billing_address_only() && WC()->cart->needs_shipping()) : ?>
-
         <h3><?php esc_html_e('Billing &amp; Shipping', 'woocommerce'); ?></h3>
-
     <?php else : ?>
-
         <h3><?php esc_html_e('Billing details', 'woocommerce'); ?></h3>
-
     <?php endif; ?>
 
     <?php do_action('woocommerce_before_checkout_billing_form', $checkout); ?>
@@ -36,11 +32,9 @@ defined('ABSPATH') || exit;
         <?php
         $fields = $checkout->get_checkout_fields('billing');
 
-        foreach ($fields as $key => $field) {
-//            woocommerce_form_field($key, $field, $checkout->get_value($key)); ?>
-
+        foreach ($fields as $key => $field) { ?>
             <div class="mb-3 col-sm-6">
-                <label class="form-label">
+                <label class="form-label" for="<?= $key ?>">
                     <?= $field['label'] ?>
                 </label>
 
@@ -49,8 +43,34 @@ defined('ABSPATH') || exit;
                             id="billing_city"
                             class="state_select form-select p-1 rounded"
                             autocomplete="address-level2"
-                            placeholder="یک شهر انتخاب کنید"></select>
+                            placeholder="یک شهر انتخاب کنید">
+                        <option value="">یک شهر انتخاب کنید</option>
+                        <?php
+                        // List of cities and their values (example values)
+                        $cities = array(
+                            "TEH" => "تهران",
+                            "KAR" => "کرج",
+                            "MHD" => "مشهد",
+                            "ESF" => "اصفهان",
+                            "SHZ" => "شیراز",
+                            "TBZ" => "تبریز",
+                            "AHV" => "اهواز",
+                            "QOM" => "قم",
+                            "YAZ" => "یزد",
+                            "KRN" => "کرمان",
+                        );
 
+                        // Get the selected value for billing_city
+                        $selected_city = trim($checkout->get_value($key)); // Ensure it's trimmed
+
+                        // Loop through the cities and output options
+                        foreach ($cities as $city_code => $city_name) {
+                            // Compare selected value, and set 'selected' if they match
+                            $selected = ($selected_city === $city_code) ? 'selected' : '';
+                            echo "<option value='" . esc_attr($city_code) . "' {$selected}>" . esc_html($city_name) . "</option>";
+                        }
+                        ?>
+                    </select>
                 <?php } elseif ($key == 'billing_state') { ?>
                     <select name="billing_state"
                             id="billing_state"
@@ -60,48 +80,62 @@ defined('ABSPATH') || exit;
                             data-input-classes=""
                             data-label="استان">
                         <option value="">انتخاب کنید</option>
-                        <option value="ABZ">البرز</option>
-                        <option value="ADL">اردبیل</option>
-                        <option value="EAZ">آذربایجان شرقی</option>
-                        <option value="WAZ">آذربایجان غربی</option>
-                        <option value="BHR">بوشهر</option>
-                        <option value="CHB">چهارمحال و بختیاری</option>
-                        <option value="FRS">فارس</option>
-                        <option value="GIL">گیلان</option>
-                        <option value="GLS">گلستان</option>
-                        <option value="HDN">همدان</option>
-                        <option value="HRZ">هرمزگان</option>
-                        <option value="ILM">ایلام</option>
-                        <option value="ESF">اصفهان</option>
-                        <option value="KRN">کرمان</option>
-                        <option value="KRH">کرمانشاه</option>
-                        <option value="NKH">خراسان شمالی</option>
-                        <option value="RKH">خراسان رضوی</option>
-                        <option value="SKH">خراسان جنوبی</option>
-                        <option value="KHZ">خوزستان</option>
-                        <option value="KBD">کهگیلویه و بویراحمد</option>
-                        <option value="KRD">کردستان</option>
-                        <option value="LRS">لرستان</option>
-                        <option value="MKZ">مرکزی</option>
-                        <option value="MZN">مازندران</option>
-                        <option value="GZN">قزوین</option>
-                        <option value="QHM">قم</option>
-                        <option value="SMN">سمنان</option>
-                        <option value="SBN">سیستان و بلوچستان</option>
-                        <option value="THR">تهران</option>
-                        <option value="YZD">یزد</option>
-                        <option value="ZJN">زنجان</option>
+                        <?php
+                        // List of states and their values
+                        $states = array(
+                            "ABZ" => "البرز",
+                            "ADL" => "اردبیل",
+                            "EAZ" => "آذربایجان شرقی",
+                            "WAZ" => "آذربایجان غربی",
+                            "BHR" => "بوشهر",
+                            "CHB" => "چهارمحال و بختیاری",
+                            "FRS" => "فارس",
+                            "GIL" => "گیلان",
+                            "GLS" => "گلستان",
+                            "HDN" => "همدان",
+                            "HRZ" => "هرمزگان",
+                            "ILM" => "ایلام",
+                            "ESF" => "اصفهان",
+                            "KRN" => "کرمان",
+                            "KRH" => "کرمانشاه",
+                            "NKH" => "خراسان شمالی",
+                            "RKH" => "خراسان رضوی",
+                            "SKH" => "خراسان جنوبی",
+                            "KHZ" => "خوزستان",
+                            "KBD" => "کهگیلویه و بویراحمد",
+                            "KRD" => "کردستان",
+                            "LRS" => "لرستان",
+                            "MKZ" => "مرکزی",
+                            "MZN" => "مازندران",
+                            "GZN" => "قزوین",
+                            "QHM" => "قم",
+                            "SMN" => "سمنان",
+                            "SBN" => "سیستان و بلوچستان",
+                            "THR" => "تهران",
+                            "YZD" => "یزد",
+                            "ZJN" => "زنجان",
+                        );
+
+                        // Get the selected value for billing_state
+                        $selected_state = $checkout->get_value($key);
+
+                        // Loop through the states and output options
+                        foreach ($states as $state_code => $state_name) {
+                            $selected = ($selected_state === $state_code) ? 'selected' : '';
+                            echo "<option value='{$state_code}' {$selected}>{$state_name}</option>";
+                        }
+                        ?>
                     </select>
                 <?php } else { ?>
                     <input class="form-control"
                            name="<?= $key ?>"
-                           value="<?= $checkout->get_value($key)
-                           ?>">
+                           id="<?= $key ?>"
+                           value="<?= $checkout->get_value($key) ?>"
+                           type="<?= isset($field['type']) ? $field['type'] : 'text' ?>"
+                           placeholder="<?= isset($field['placeholder']) ? $field['placeholder'] : '' ?>">
                 <?php } ?>
             </div>
-        <?php }
-
-        ?>
+        <?php } ?>
     </div>
 
     <?php do_action('woocommerce_after_checkout_billing_form', $checkout); ?>
@@ -119,12 +153,7 @@ defined('ABSPATH') || exit;
 
         <div class="woocommerce-additional-fields__field-wrapper">
             <?php foreach ($checkout->get_checkout_fields('order') as $key => $field) : ?>
-                <!--                --><?php //woocommerce_form_field($key, $field, $checkout->get_value($key)); ?>
-                <input class="form-control"
-                       name="<?= $key ?>"
-                       placeholder="<?= $field['placeholder'] ?>"
-                       value="<?= $checkout->get_value($key)
-                       ?>">
+                <?php woocommerce_form_field($key, $field, $checkout->get_value($key)); ?>
             <?php endforeach; ?>
         </div>
 
@@ -163,4 +192,16 @@ defined('ABSPATH') || exit;
 
         <?php do_action('woocommerce_after_checkout_registration_form', $checkout); ?>
     </div>
+
 <?php endif; ?>
+<style>
+    .select2-container--default .select2-selection--single {
+        border: 1px solid #c8cfd5;!important;
+        height: 36px;
+    }
+    textarea#order_comments {
+        border-radius: 11px;
+        padding: 10px;
+        border-color: #d2d2d2;
+    }
+</style>

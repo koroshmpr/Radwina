@@ -24,13 +24,14 @@ get_header(); ?>
                     ?>
                 </div>
                 <div class="d-lg-none">
-                    <button class="btn btn-primary bg-opacity-75 position-fixed start-50 translate-middle-x rounded-circle call-btn"
+                    <button class="btn btn-primary bg-opacity-75 d-flex gap-2 w-auto justify-content-center align-items-center position-fixed start-50 translate-middle-x rounded-pill call-btn"
                             type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                             aria-controls="offcanvasRight">
                         <svg width="25" height="25" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                   d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
                         </svg>
+                        دسته بندی‌ها
                     </button>
                 </div>
             </aside>

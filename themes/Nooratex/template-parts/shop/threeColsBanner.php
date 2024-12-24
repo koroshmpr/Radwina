@@ -2,7 +2,7 @@
     <h4 class="text-center fw-bolder fs-2">محصولات و خدمات<span class="fw-bolder fs-1 text-primary "> رادوینا</span>
     </h4>
     <p class="text-dark text-opacity-75 text-center">پرطرفدارترین دسته ها در یک نگاه</p>
-    <div class="p-4 px-lg-0 row row-cols-lg-3 row-cols-1 align-items-center justify-content-lg-between justify-content-center gap-3">
+    <div class="p-4 px-lg-0 row row-cols-lg-4 row-cols-2 align-items-center justify-content-lg-between justify-content-evenly gap-4 gap-lg-3">
         <?php
         // Get selected banners from ACF repeater field
         $banners = get_field('3Cols_banner', 'option');
@@ -25,8 +25,8 @@
                 if (!$linkAllow) : ?>
                     <div
                 <?php endif; ?>
-                class="rounded-3 shadow-sm row align-items-end p-4 animate__animated animate__zoomIn"
-                style="height:350px;background-size: contain!important;">
+                class="rounded-3 overflow-hidden shadow-sm row align-items-end p-2 pb-3 animate__animated animate__zoomIn"
+                style="height:300px;background-size: contain!important;">
                 <picture>
                     <source media="(min-width: 576px)" srcset="<?= $imgDesktop['url'] ?? ''; ?>">
                     <source media="(max-width: 575px)"
@@ -36,7 +36,7 @@
                 </picture>
                 <?php if ($linkAllow) : ?>
                     <div class="d-flex justify-content-between bg-white p-3 rounded-2">
-                        <h4 class="text-dark mb-0"><?= esc_html($title); ?></h4>
+                        <h4 class="text-dark fs-6 mb-0"><?= esc_html($title); ?></h4>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                              class="bi bi-arrow-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"

@@ -27,47 +27,32 @@ get_header('shop');
  * @hooked WC_Structured_Data::generate_website_data() - 30
  */
 
-?>
-<?php get_template_part('template-parts/shop/hero-archive-product');
-get_template_part('template-parts/shop/threeColsBanner');
-get_template_part('template-parts/shop/category-Columns-4');
-get_template_part('template-parts/shop/products-columns-6');
-if (get_field('shop-coupen_type' , 'option')) :
+// Get the current paged value
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+// Only display these template parts on the first page
+if ($paged === 1) {
+    get_template_part('template-parts/shop/hero-archive-product');
+    get_template_part('template-parts/shop/threeColsBanner');
+    get_template_part('template-parts/shop/category-Columns-4');
+}
+
+// Always display the archive product list
+get_template_part('template-parts/shop/archive-product-list');
+
+// Optionally display the shop coupon section on all pages
+if ($paged === 1 && get_field('shop-coupen_type', 'option')) :
     get_template_part('template-parts/shop/shop-coupen');
 endif;
-get_template_part('template-parts/homePage/about-us');
-//get_template_part('template-parts/shop/shop-cta');
+
+// Optionally include About Us section only on the first page
+if ($paged === 1) {
+    get_template_part('template-parts/homePage/about-us');
+}
+
+// Uncomment the following line if CTA should only appear on the first page
+// if ($paged === 1) get_template_part('template-parts/shop/shop-cta');
 ?>
-    <!--    {{--  about and order banner  --}}-->
-    <!--    <section id="archivePage">-->
-    <!--        <div class="container-xl">-->
-    <!--            <div class="row pb-5">-->
-    <!--                                {{-- filters sidebar for lg up --}}-->
-    <!--                <div class="col-lg-3">-->
-    <!--                    --><?php
-//                    get_template_part('template-parts/sidebar')
-//                    ?>
-    <!--                </div>-->
-    <!---->
-    <!--                <div class="col-lg-9 row g-lg-3 g-2 row-cols-xl-4 row-cols-lg-3 row-cols-md-4 row-cols-2 m-0"-->
-    <!--                     id="ajaxFilter">-->
-    <!--                    --><?php //if (have_posts()) {
-//                        while (have_posts()) : the_post(); ?>
-    <!--                            <article>-->
-    <!--                                --><?php //wc_get_template_part('content', 'single-card'); ?>
-    <!--                            </article>-->
-    <!--                        --><?php //endwhile;
-//                    } else {
-//                        echo __('هیچ محصولی یافت نشد');
-//                    }
-//                    wp_reset_postdata();
-//                    ?>
-    <!--                    --><?php //get_template_part('template-parts/pagination') ?>
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </section>-->
+
 <?php
-
-
 get_footer('shop');

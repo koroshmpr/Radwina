@@ -25,7 +25,7 @@ if ($page_description) { ?>
         </div>
     </section>
 <?php } ?>
-<footer>
+<footer class="overflow-hidden">
     <?php
     //          upper footer = call to actions
     //    get_template_part('template-parts/layout/footer/upperFooter');
@@ -48,7 +48,7 @@ if ($page_description) { ?>
         </div>
     </div>
 <?php }
-if (is_product_category()) { ?>
+if (is_product_category() || is_shop()) { ?>
     <div class="offcanvas offcanvas-start pe-5 bg-transparent" tabindex="-1" id="offcanvasRight"
          aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header bg-white">

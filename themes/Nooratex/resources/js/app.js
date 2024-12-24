@@ -13,7 +13,7 @@ $(document).ready(function () {
             }
         })
         $(window).scroll(function () { // check if scroll event happened
-            if ($(document).scrollTop() > 30) { // check if user scrolled more than 50 from top of the browser window
+            if ($(document).scrollTop() > 50) { // check if user scrolled more than 50 from top of the browser window
                 $('.backTo_Top').removeClass('outro');
 
             } else {
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     //toggle header on time
     const toggleScrollClass = function () {
-        if (window.scrollY > 24) {
+        if (window.scrollY > 50) {
             document.body.classList.add('scrolled');
         } else {
             document.body.classList.remove('scrolled');
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
         loop: false,
         effect: 'slide',
         speed: 1000,
-        slidesPerView: 1.3,
+        slidesPerView: 1.8,
         centeredSlides: false,
         spaceBetween: 20,
         autoplay: {
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         breakpoints: {
             992: {
-                slidesPerView: 4,
+                slidesPerView: 6,
             }
         },
         // disableOnInteraction: false,
@@ -194,9 +194,12 @@ document.addEventListener('DOMContentLoaded', function () {
     let decreaseBtn = document.getElementById('decrease-product-btn');
     if (increaseBtn || decreaseBtn) {
         let step = document.getElementById('quantity-input-box').getAttribute('data-step');
-        let stepNum = Number(step);
-        let minQuantity = stepNum;
-        let currentQuantity = stepNum;
+        // let stepNum = Number(step);
+        let stepNum = Number(1);
+        // let minQuantity = stepNum;
+        let minQuantity = step;
+        // let currentQuantity = stepNum;
+        let currentQuantity = Number(step);
         function updateQuantityDisplay() {
             document.getElementById('product-count').innerText = currentQuantity;
             document.getElementById('product-quantity').value = currentQuantity;
@@ -214,23 +217,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         decreaseBtn.addEventListener('click', function () {
-            if (stepNum === 1 || currentQuantity >= 10) {
-                handleQuantityChange(-1);
-            } else {
-                if (currentQuantity <= 9) {
-                    let negativeStepNum = -stepNum;
-                    handleQuantityChange(negativeStepNum);
-                }
-            }
+            // if (stepNum === 1 || currentQuantity >= 10) {
+            //     handleQuantityChange(-1);
+            // } else {
+            //     if (currentQuantity <= 9) {
+            //         let negativeStepNum = -stepNum;
+                    handleQuantityChange(-stepNum);
+            //     }
+            // }
         });
 
 
         increaseBtn.addEventListener('click', function () {
-            if (stepNum === 1 || currentQuantity >= 9) {
-                handleQuantityChange(1);
-            } else {
-                handleQuantityChange(stepNum);
-            }
+            // if (stepNum === 1 || currentQuantity >= 9) {
+                handleQuantityChange(+stepNum);
+            // } else {
+            //     handleQuantityChange(stepNum);
+            // }
         });
 
 
@@ -247,7 +250,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function updateQuantityStep(event) {
             var currentQuantity = parseInt(event.target.value, 10);
-            var newStep = (currentQuantity < 10) ? stepSize : '1';
+            // var newStep = (currentQuantity < 10) ? stepSize : '1';
+            var newStep = '1';
             event.target.step = newStep;
         }
 
